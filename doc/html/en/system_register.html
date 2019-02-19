@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>System Register</title>
+  </head>
+
+  <body>
+    <h1>System Register</h1>
+	
+<CENTER><H2>DVDAuthor / VMLanguage</H2></CENTER>
+
+The DVDAuthor Virtual Machine Language is used to provide code to be executed by the DVD player in response to events such as menu button presses by users.<P>
+
+The following text takes the manual page for DVD author as a starting point.<P>
+
+The language is quite simple and roughly looks like C.
+<UL>
+    <LI>Statements are terminated with a semicolon.</LI>
+    <LI>Statements can span multiple lines.</LI>
+    <LI>Multiple statements can appear on one line.</LI>
+    <LI>Whitespace (space, tab, newlines) are not important, except to separate keywords and identifiers.</LI>
+</UL><P>
+
+<H4><B>Variables</B></H4><P>
+
+The DVD virtual machine processes 16 bit values. It supports up to 16 general purpose registers; however dvdauthor reserves 3 for internal use. Thus registers 0-12 are avaialable for use and are referred to as g0 through g12.<P>
+
+There are also 24 system registers, which can be referred to as s0 through s23. Not all of these can be set. Many of these have pseodonyms.<P>
+
+<TABLE BORDER=2>
+<TR><TD>Name</TD><TD>Pseudonym</TD><TD>Writable</TD><TD>Description</TD></TR>
+<TR><TD>s0</TD><TD>&nbsp;</TD><TD>&nbsp;</TD><TD>Menu Description Language Code</TD></TR>
+<TR><TD>s1</TD><TD>audio</TD><TD>yes</TD><TD>Denotes the audio channel, ranging from 0-7.</TD></TR>
+<TR><TD>s2</TD><TD>subtitle</TD><TD>yes</TD><TD>The subtitle track, ranging from 0-31. If you want the subtitle to always be displayed, then you should add 64 (i.e. choose 64-95). Simply selecting the track (0-31) means that only the forced subtitles will be displayed, whereas enabling the track (64-95) means that all the subtitles will be displayed. This allows you to have forced subtitles only for the parts of the movie where the actors are speaking a foreign (to the viewer) language, but still have normal subtitles for the hearing impaired. The hearing impaired viewers would enable the track (64-95) while the other viewers would just select the track (0-31) they would be able to share the track.</TD></TR>
+<TR><TD>s3</TD><TD>angle</TD><TD>yes</TD><TD>Selects the angle (currently untested).</TD></TR>
+<TR><TD>s4</TD><TD>&nbsp;</TD><TD>&nbsp;</TD><TD>Title Track Number</TD></TR>
+<TR><TD>s5</TD><TD>&nbsp;</TD><TD>&nbsp;</TD><TD>VTS Title Track Number</TD></TR>
+<TR><TD>s6</TD><TD>&nbsp;</TD><TD>&nbsp;</TD><TD>VTS PGC Number</TD></TR>
+<TR><TD>s7</TD><TD>&nbsp;</TD><TD>&nbsp;</TD><TD>PTT Number for One_Sequential_PGC_Title</TD></TR>
+<TR><TD>s8</TD><TD>button</TD><TD>yes</TD><TD>Denotes the currently highlighted button. Note that the value is multiplied by 1024, so the first button is 1024, the second is 2048, etc.</TD></TR>
+<TR><TD>s9</TD><TD>&nbsp;</TD><TD>&nbsp;</TD><TD>Navigation Timer</TD></TR>
+<TR><TD>s10</TD><TD>&nbsp;</TD><TD>&nbsp;</TD><TD>Title PGC Number for Navigation Timer</TD></TR>
+<TR><TD>s11</TD><TD>&nbsp;</TD><TD>&nbsp;</TD><TD>Audio Mixing Mode for Karaoke</TD></TR>
+<TR><TD>s12</TD><TD>&nbsp;</TD><TD>&nbsp;</TD><TD>Country Code for Parental Management</TD></TR>
+<TR><TD>s13</TD><TD>&nbsp;</TD><TD>&nbsp;</TD><TD>Parental Level</TD></TR>
+<TR><TD>s14</TD><TD>&nbsp;</TD><TD>&nbsp;</TD><TD>Player Configurations for Video</TD></TR>
+<TR><TD>s15</TD><TD>&nbsp;</TD><TD>&nbsp;</TD><TD>Player Configurations for Audio</TD></TR>
+<TR><TD>s16</TD><TD>&nbsp;</TD><TD>&nbsp;</TD><TD>Initial Language Code for Audio</TD></TR>
+<TR><TD>s17</TD><TD>&nbsp;</TD><TD>&nbsp;</TD><TD>Initial Language Code Extension for Audio</TD></TR>
+<TR><TD>s18</TD><TD>&nbsp;</TD><TD>&nbsp;</TD><TD>Initial Language Code for Sub-picture</TD></TR>
+<TR><TD>s19</TD><TD>region</TD><TD>&nbsp;</TD><TD>Initial Language Code Extension for Sub-picture</TD></TR>
+<TR><TD>s21</TD><TD>&nbsp;</TD><TD>&nbsp;</TD><TD>Reserved 21</TD></TR>
+<TR><TD>s22</TD><TD>&nbsp;</TD><TD>&nbsp;</TD><TD>Reserved 22</TD></TR>
+<TR><TD>s23</TD><TD>&nbsp;</TD><TD>&nbsp;</TD><TD>Reserved 23</TD></TR>
+</TABLE><P>
+
+<H4><B>Expressions</B></H4><P>
+
+Expressions follow typical C syntax except that booleans are not convertible to integers and vice versa. Operators and comparisons are:<P>
+
+ ==,  !=, &gt;=, &gt;, &lt;=, &lt;, &&, ||, !, eq, ne, ge, gt, le, lt, and, or, xor, not, +, -, *, /, %, &, |, ^ <P>
+
+Since the code is encapsulated in XML, the parser will catch any unescaped < characters, thus alphabetic mnemonics have been provided for all comparison operators for consistency.<P>
+
+There is also a numerical function:<P>
+
+ random(EXPRESSION)<P>
+
+computes a psuedo-random number, between 1 and the supplied number, inclusively.<P>
+
+<H4><B>Blocks</B></H4><P>
+
+Blocks are either a single statement (terminated by a semicolon), or a group of statements wrapped in curly braces. For example:<P>
+<PRE>
+ g3=s7;
+
+ {
+   audio=1;
+   subtitle=65;
+   jump vmgm menu 3;
+ }
+</PRE><P>
+
+<H4><B>Statements</B></H4><P>
+
+The statements supported are fairly simple at the moment.<P>
+
+<PRE>
+ VARIABLE=EXPRESSION;
+</PRE><P>
+
+Sets a variable equal to the result of an equation.<P>
+
+<PRE>
+ if (EXPRESSION) BLOCK;
+
+ if (EXPRESSION) BLOCK; else BLOCK;
+</PRE><P>
+
+Calculates the expression; if true, then it executes the block of code.<P>
+<PRE>
+
+ jump TARGET;
+
+ call TARGET [resume CELL];
+
+ resume;
+</PRE>
+
+Jumps to a particular title or menu, or calls a particular menu, or returns to the calling title. You can only execute a call from a title to a menu; all other forms are illegal. The purpose of using call instead of jump (besides the fact that they support a mutually exclusive list of targets) is to allow the menu to return to the point in the title where the call originated using resume. You can manually specify the return cell by using the resume keyword, however if you do not specify one and you use the command in a post instruction block, then it will presume cell 1.<P>
+
+The following are possible targets:
+<PRE>
+
+ [vmgm | titleset X] menu
+
+ [vmgm | titleset X] menu Y
+
+ [vmgm | titleset X] menu entry Z
+</PRE><P>
+
+Targets either the default menu, a menu number Y, or the menu denoted as the entry for Z. The menu is in either the VMGM or titleset domain. If you wish to target a menu in the current domain then you can omit the domain moniker.<P>
+<PRE>
+ [vmgm | titleset X] title Y [chapter Z]
+</PRE><P>
+
+Targets a title, or a chapter in a title. Numbering starts at 1. All of the titles on the disc are accessible in the VMGM domain, numbered sequentially no matter what titleset they are located in, so that in a DVD with two titlesets, each of which contains one title, the second title may be accessed with "title 2" . Or you can access them by titleset instead.<P>
+<PRE>
+ chapter Z
+
+ program Z
+
+ cell Z 
+</PRE><P>
+
+Targets a chapter, program, or cell in the current title or menu (note that menus do not have chapters). You can use this to create looping menus: jump cell 1;<P>
+
+According to the changelog for dvdauthor-0.6.12, break and goto have been added to the vm language as statements.<BR>
+
+<HR><P>
+
+<!-- Created: Mon Oct 30 13:16:58 EST 2006 -->
+<!-- hhmts start -->
+Last modified: Mon Oct 30 13:33:37 EST 2006<P>
+<!-- hhmts end -->
+  </body>
+</html>
