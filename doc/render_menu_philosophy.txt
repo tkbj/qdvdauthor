@@ -1,0 +1,43 @@
+
+DialogExecute wait for user changes, then 
+
+calls Execute when we should render the menu we emit (signal (renderMenu(menuName)) -=> DialogExecute::slotRenderMenu
+	-> DialogExecute::slotRenderMenu emit (signalRenderMenu (menuName)) -=> QDVDAuthor::slotRenderMenu
+		-> QDVDAuthor::slotRenderMenu create a StartRenderMenu (pMenu) - object
+		-> calls startMenuRender.renderDVDMenu ()
+
+
+static StartMenuRender::registerToRenderMenu
+	Called from nowhere ... 
+	->Creates new StartMenuRender(pMenu)-object and adds to static list.
+
+static StartMenuRender::registerToExtract
+	Called from MovieObject - timer when user created a new movie object (30 secs delay).
+	->Creates new StartMenuRender(movieObject)-object and adds to static list.
+
+StartMenuRender::renderDVDMenu
+	Called from Execute-Object or listFifo
+	->checks if already created (statusFile)
+	->checks if currently beeing created and if so wait for thread to finish
+	->otherwise run()->renderDVDMenu() in thread 
+
+StartMenuRender::renderMovieObject
+	Called from listFifo when stored object = movieObject (See also registerToExtract)
+	->extracts all images required to render this movie object
+	->writes status file.
+
+
+RENDERING process:
+currently : 
+ButtonPreview::drawContents (QPainter) calls
+	m_listMenuObjects[t]->drawContents (QPainter)
+
+we need : 
+ButtonPreview::drawContents (QPainter, int iFrameNumber) calls
+	m_listMenuObjects[t]->drawContents (QPainter, iFrameNumber, iTotalFrames)
+
+
+
+OBSOLETE function : 
+	DVDMenu::slotRenderMenu
+	>bool StartMenuRender::checkStatusFileDone ()<, use instead >int StartMenuRender::checkStatusFile ()<
