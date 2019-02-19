@@ -1,0 +1,46 @@
+To create a DVD one need a *.vob video file. (kdenlive -> 2-pass)
+
+Installation
+copy ffmpeg-0.6.3 to qdvdauthor-2.3.1/qrender/ffmpeg-0.6.3
+
+cd qdvdauthor-2.3.1/qrender/ffmpeg-0.6.3
+./configure --prefix="`pwd`" --disable-yasm --enable-gpl --enable-static --enable-shared --libdir=lib --incdir=include
+make
+make CFLAGS="-Wno-error=implicit-function-declaration"
+make install
+
+cd build
+cmake ../. -DCMAKE_INSTALL_PREFIX=/usr
+make
+make install (as root)
+
+Requirements OpenSuSE Leap 42.2
+cmake
+gcc-c++
+libxine-devel
+vlc-devel
+libQt5Core-devel
+libQt5Gui-devel
+libQt5Widgets-devel
+libQt5Xml-devel
+libQt5Network-devel
+
+Postinstallation requirements
+libxine2 (http://packman.links2linux.de)
+xine-ui
+libxine2-codecs
+MPlayer
+mjpegtools
+
+Ubuntu 16.04 packages and other distributions
+https://software.opensuse.org/package/qdvdauthor
+http://download.opensuse.org/repositories/home:/tkb/
+
+dvd-slideshow 0.8.4-1
+line 917 + 920:
+loop_input --> loop 1
+line 2525:
+soxi "$1" -D 1> "$tmpdir"/trash.txt --> soxi -D "$1" 1> "$tmpdir"/trash.txt
+
+qrender example to create a *.vob file (/tmp/qrender/*.vob)
+qrender -v 5 -ix "/tmp/Unnamed/Images (2017_11_02).xml"

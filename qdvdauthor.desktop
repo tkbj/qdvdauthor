@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=QDVDAuthor
+Comment=DVD Author GUI
+Icon=/usr/share/pixmaps/qdvdauthor.png
+Exec=/usr/bin/qdvdauthor
+Terminal=false
+Type=Application
+Encoding=UTF-8
+X-Desktop-File-Install-Version=0.3
+Categories=Application;AudioVideo;X-Red-Hat-Base;

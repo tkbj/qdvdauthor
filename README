@@ -1,0 +1,23 @@
+'Q' DVD-Author - README
+
+This project was started in December 2003 after we had our first child and I wanted to create a DVD to send to my parents. I found that no GUI existed at that time but all the command line tools were there. 
+
+It took me a long time to create my first DVD and it was a major pain to learn all the command line tools to get there.
+
+So I decided to write a quick and easy GUI to handle all the tasks to create a DVD. After about 3 months I had a young project which soon started to grow and grow and grow and ...
+
+It has grown beyond its initial planned quick-and-dirty tool state and is now well on its way to become the premiere DVD authoring suite for Linux.
+
+The whole suite consits now of a set of executables. Notably the two main executables QDVDAuthor and QRender function in conjunction to render the menus across multiple machines.
+
+QSlideshow is the outdated tool to create a mpeg slideshow from input images. QDVDAuthor is now using QRender for this task and replaced the Slideshow GUI with the DialogImages - dialog.
+
+QPlayer is a simple player which sports controls for DVD navigation.
+
+So stay tuned in and follow the progress - page on the web site to keep up to date.
+
+http://qdvdauthor.sourceforge.net
+
+Varol :)
+
+

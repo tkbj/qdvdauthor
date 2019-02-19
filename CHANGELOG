@@ -1,0 +1,1625 @@
+CHANGELOG :
+o	Done
++	needs some more attention
+-	Not yet implemented at all.
+
+KUBUNTU 8.04:
+> apt-get install ffmpeg libavcodec-dev libavutil-dev libbz2-dev qt3-dev-tools libqt4-dev qt3-apps-dev libqt3-headers qt3-designer mplayer libbz2 g++ cvs bzip2
+
+Fedora 9
+> yum install dvdauthor qt.i386 qt-devel.i386 qt3-designer.i386 qt3.i386 qt3-devel.i386 mplayer xine-lib* mjpegtools.i386 mjpegtoos-devel.i386
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+
+RELEASE 2.3.1 Not yet released
+o	BUGFIX: take the KenBurns parameters from the FewCLickWizard over to the generated Slideshow.
+-       Added helper videos to the resources. ( mpeg4 videos which shows how to create a DVD ).
+-       Research more of "Xtreme PhotoStory on CD & DVD Deluxe 8"
+-       BUGFIX: Where are the subtitles for the slideshows ?
+        BUGFIX: check available templates in [ Tools -> Check Installation ... ]
+-       BUGFIX: After adding a new slideshow, the previous one did render again.
++       BUGFIX: DVDMenu Rename Menu
++       BUGFIX: ButtonAttributes. Change of E.g. Mask type or Mask color ?
+-       BUGFIX: Multiple SourceFileInfos in a SourceFileEntry, jumping to files inside this SFE and using PlayMultiple is causing bad dvdauthor.xml file.
+https://sourceforge.net/tracker/?func=detail&aid=2827045&group_id=98243&atid=620414
+-       BUGFIX: Slideshow creation, Audio is not transitioned from vid to image and from image to vid.
+-       Add pre-settings to New Project wizard ( NTSC/PAL, 4:3/16:9, mp2/ac3 )
+-       Add display of free space to this dialog
+-       Add new template where a zoomed-out mask goes from left to right.
+-       Automaticly change "png2yuv -j ..." to "jpeg2yuv -j ..." if Tools-Setup is checked to jpeg.
+-       BUGFIX: ERR: Can only have 128 commands for pre, post, and cell commands.
+
+
+RELEASE 2.3.0 Not yet released
+o	Added sorting functionality in DialogImages / DialogFiles, to enable better control for generated slideshows.
+o	Fixed a couple of crashing bugs in DialogImages / DialogFiles relating to VirtualFolder usage.
+o	Added Ken Burns effect transitioning for Slideshows.
+o	Added KenBurns-slideshow dialog.
+o	Redesigned the ComplexDVD plugin for the OneClickWizard. It is 100% utilizing scripts to create the GUI, and handle the random file retrieval from the internet.
+o	Added hdrcreme.sh, dreamscene.sh, and fantom-xp.sh scripts
+o	BUGFIX: QRender ignores NoKenBurns if selected on a per image option
+o	QRender disconnects from QDVDAuthor and does no longer update the progress.
+	- Handle TcpSocket Swap, Need to continue.
+o	Bugfix: KenBurnsDialog: After removing of an image we need to redo the alternating colors.
+o	Bugfix: After we return to the DialogSlide - dialog, we need to recalculate the Slideshow length, and change the header # of img / # of vids.
+o	SetupDialog is missing a default KenBurns option .
+o	Added DialogImages for Slideshow context menus.
+o       FewClickWizard: When too many buttons being generated the dialog is streteched vertically.
+o       Add 4:3/16:9 to Setup dialog -> Slideshow tab.
+Added file plugins/complexdvd/complexdvd.cpp
+Added file plugins/complexdvd/complexdvd.h
+Added file plugins/complexdvd/run.cpp
+Added file plugins/complexdvd/run.h
+Added file plugins/complexdvd/fantom-xp.sh
+Added file plugins/complexdvd/hdrcreme.sh
+Added file plugins/complexdvd/dreamscene.sh
+Deleted file plugins/complexdvd/simpledvd.cpp
+Deleted file plugins/complexdvd/simpledvd.h
+
+
+Varsion 2.2.2 Released October 3'rd 2011
+o	Fixed floating point crash for AC3 codec in ffmpeg
+
+Version 2.2.1 Released October 2'nd 2011
+o	Fixed ffmpeg compiling issues due to changed ffmpeg API.
+
+Version 2.2.0 Released September 27'th 2011
+o       Added DreamScene ( background videos ) to ComplexDVD plugin for the FewClickWizard.
+o       BUGFIX: TemplateDownload dialog is not display the template names.
+o       BUGFIX: HDRCreme no longer works.
+o       BUGFIX: Menu Loop does no longer work.
+o       - After generating DVDauthor.xml, the Loop check box is set gain.
+o       BUGFIX: Plugins create one bad button ( Menu 2 -> Menu 1 instead of VMGMenu )
+o       BUGFIX: When defining a Play Multiple button, then simple buttons to videos do not return to the menu.
+o       BUGFIX: Fixed stack corruption due to overloaded operator implementation.
+Added file dialogkenburns.h
+Added file dialogkenburns.cpp
+Added file uidialogkenburns.ui
+
+Version 2.1.0 Released January 8'th 2010
+o	BUGFIX: Slideshow creation, Fixed audio transcoding for slideshow vids if the audio format is SAMPLE_FMT_U8.
+o	BUGFIX: configure script, had issues using the -j switch ( instead of the --cores )
+o	BUGFIX: Slideshow ialog, Some audio files caused the [Edit] dialog not to return to the calling function.
+o	BUGFIX: suppress "Not JPEG: /tmp/01.png" message.
+o	BUGFIX: Slideshow creation, properly init audio-output-sample_fmt.
+o	BUGFIX: Clone ButtonObjects would not clone the modifiers.
+o	BUGFIX: Configurator, Fixed the graphical configurator tool.
+o	BUGFIX: Crashing bug for ButtonObjects with shadows and overlay objects.
+o	BUGFIX: Fixed StructureItem when creating a ButtonObect.
+o	BUGFIX: Crashing bug when changing colors on MaskObjects after using the button-dialog.
+o	BUGFIX: Fixed rendering of MaskObjects on Images with OverlayObjects.
+o	Added possibility to modify multiple objects in the TemplateWizard ( required for the ReflectionPond template )
+o	BUGFIX: Crashing bug when using MovieObjects.
+o	Added context menu items to a ButtonObject whose main object contains a ShadowObject or an OverlayObject.
+o	BUGFIX: HDRCreme does no longer work.
+
+
+Version 2.0.0 Released October 12'th 2009
+o	Added ogv to the possible video file extensions.
+o	Added 16:9 ratio to Setup -> Slideshow.
+o	Added DialogDelta to auto group videos / images in DialogFiles / DialogImages.
+o	Improved the build system.
+o	Reworked the Undo-stack dialog.
+o	BUGFIX: Fix aspect ratio when creating DVDs through teh plugins.
+o	BUGFIX: After plugin is done, slideshows won't start ...
+o	BUGFIX: Added missing translation files to the CVS repository.
+o	BUGFIX: Pre-scale 16:9 images to be non distorted ( assuming square pixel source )
+o	BUGFIX: Settings to encode videos from 4:3 to 16:9 in Encoder sets the wrong scale.
+o	BUGFIX: Crashing bug in the UndoBuffer
+o	BUGFIX: Fixed memory leak when closing MatrixDialog
+o	BUGFIX: Modifiers operator == was bad.
+o	BUGFIX: Handle DialogMatrix and Undo / Redo.
+o	- Check why rotate does not seem to work
+o	- Check why Zoom is out-of-whack after undo
+o	BUGFIX: can't undo ImageObject - rotate
+o	BUGFIX: Undo ButtonObject: Rotate, Move, Scale, Shear
+o	BUGFIX: Undo ButtonObject: Handle Define as button
+o	- Fix Undo / Redo [Define as Button]
+o	BUGFIX: Undo ButtonObject: Handle unbutton
+o	BUGFIX: Sometimes the redo steps are no being removed when they should.
+o	BUGFIX: Undo ButtonObject: Dropped button
+o	BUGFIX: Undo ButtonObject: Dropped chapters
+o	BUGFIX: Undo ButtonObject: Dropped text
+o	BUGFIX: Undo ButtonObject: Dropped image
+o	BUGFIX: Undo ButtonObject: Add from Library
+o	BUGFIX: Always ensure the currentPos is visible in the UndoStack dialog.
+o	BUGFIX: Handle new Project, clear Undo/Redo history
+o	BUGFIX: TextObject does not carry over changes ( E.g. change the text )
+o	BUGFIX: ImageAttributes.
+o	BUGFIX: FrameAttributes.
+o	BUGFIX: MovieAttributes.
+o	BUGFIX: moving multiple objects
+o	BUGFIX: DVDMenu undo clone
+o	BUGFIX: DVDMenu undo Delete Menu
+o	BUGFIX: DVDMenu undo Add Sound
+o	BUGFIX: DVDMenu undo Add Intro
+o	BUGFIX: DVDMenu undo Add Extro
+o	BUGFIX: DVDMenu undo Delete Intro
+o	BUGFIX: DVDMenu undo Delete Extro
+o	BUGFIX: DVDMenu undo Properties
+o	BUGFIX: Handle multi user environments properly
+o	BUGFIX: DVDLayout: PlayMultiple: Menu points to two video files even though only one button exists.
+o	BUGFIX: DVDLayout: PlayMultiple: Fixed pointing to itself
+o	BUGFIX: DVDLayoutGui: found inifnite loop issue and resolved it.
+o	BUGFIX: DialogImages,   need scrollview for larger numbers of slideshows
+o	BUGFIX: DialogFiles,    need scrollview for larger numbers of slideshows
+o	BUGFIX: FewClickWizard, need scrollview for larger numbers of slideshows
+	- Need to re-size Groups ListViews to display scrollbars if required.
+o	BUGFIX: Create more then 3 slideshows usually fails.
+Added file dialogdelta.h
+Added file dialogdelta.cpp
+Added file uidialogdelta.ui
+
+
+Version 1.11.1 Released August 16'th 2009
+o	BUGFIX: QRender: Fixed ffmpeg version information for new API calls so qrender will compile on all versions of ffmpeg.
+
+
+Version 1.11.0 Released August 6'th 2009
+o	QRender: replaced deprecated function ffmpeg calls.
+o       Added support for Ctrl-C, Ctrl-V.
+o       Added support for Del.
+o       Added support for cursor keys in the DVDMenu.
+o	Added "--omit-qdvdauthor" to he configure script. This way qrender and qdvdauthor can be built separately.
+o	Display message in DialogOverlay if mask - directory does not exist or is empty.
+o       Added OverlayObject class.
+o	- Handle drawContents
+o	- Handle setting slider when MouseMove
+o	- Handle Color
+o	- Handle Transparency
+o	- Handle Reset
+o	- Implement NoOverlay - button
+o	- Handle AnimationAttributes
+o	  - Check functionality
+o	- Change cursor shape according to Zoom, Move, or shear
+o	- Implement StructureItem attributes
+o	- Handle Init static variables ( Colors only )/usr/bin/qrender
+o	- Handle Init existing OverlayObject setting values
+o	- Add "Add Mask" Context menu for ImageOjects and MovieObjects.
+o	- OverlayObject::clone ()
+o	- Implement reading/writing to/from project file
+o	Add picture frames as masks.
+o	Add version info file to libraries
+o	Add menu item to check for latest resource versions
+o	- When Q is started for the first time, run the check.
+o	- Display if libraries etc are cmpletely missing
+o	Masks: add 1 single heart mask
+o	Masks: add a plain rectangle with frame
+o	Add slideshow aspect ratio 16:9.
+o	Rework the Undo-stack dialog.
+o	- Move the action to the very left side
+o	- Implement the multiple undo functionality
+o	- Update the UndoStack dynamically if the dialog is opened.
+o	BUGFIX: ButtonTransition: Video parameters for ButtonTransitions in the dvdauthor.xml file.
+o	BUGFIX: ButtonTransition: scale start image to have same size as end image.
+o	BUGFIX: ShadowObject rendering is wrong for images with OverlayObjects.
+o	BUGFIX: DialogMovie: MenuBackgrounds: TransitionsFeature: The duration of the transitions is lost.
+o	BUGFIX: qrender crashes if no AlphaMasks are present in SystemDir.
+o	BUGFIX: TextShaddows no longer working.
+o	BUGFIX: Videos are not removed fromt he video list after a slideshow is rendered.
+o	BUGFIX: Slideshow does not detect 16:9 or 4:3 when returning
+o	BUGFIX: When closing the app QDVDAuthor crashes on the StructureItem
+o	BUGFIX: Delete a MovieObject and press Ctrl-Z will crash QDVDAuthor.
+o	BUGFIX: ButtonDialog: The list of avail bttons needs to be that of the target DVD Menu.
+o	BUGFIX: Crashes for undo a deleted button.
+o	BUGFIX: Can not undo 'add Shadow'
+o	BUGFIX: Can not undo 'edit Shadow'
+o	BUGFIX: Can not undo 'delete Shadow'
+o	BUGFIX: Can not undo 'add OverlayObject'
+o	BUGFIX: Can not undo 'edit OverlayObject'
+o	BUGFIX: Can not undo 'delete OverlayObject'
+o	BUGFIX: Can not undo when creating a new object.
+o	BUGFIX: Fixed unicode issue in libjhead.
+o	BUGFIX: QDVDAuthor crashed when closing DialogFiles while creating thumbnails.
+o	BUGFIX: QDVDAuthor crashed when trying to create a slideshow without audio files.
+o	BUGFIX: QRender crashed when trying to create a slideshow without images.
+o	BUGFIX: libjhead did not like umlauts
+o	BUGFIX: QDVDAuthor could not handle ` in directory names.
+o	BUGFIX: Previewer resizing issue in full-screen mode.
+o	BUGFIX: QRender could not handle 11025Hz sample rate audio/video files.
+Added file dialogoverlay.h
+Added file dialogoverlay.cpp
+Added file uidialogoverlay.ui
+
+
+Version 1.10.0 Released July 3'rd
+O	Added simple Drag'n Drop support for videos to the SourceToolbar from anywhere.
+o	Added manual transitions input to the ButtonTransitions.
+o	Added icons to the structure elements
+o	Combine Structure Toolbar and Sources toolbar into one.
+o	Added capability to store temp images of a render animated menu as jpegs instead of a pngs
+o	Added transition between menus and SubMenus
+o	Added transition between menus and VMGMenu
+o	Added transition between menus and Videos.
+o	- Implement logic for CommandQueueDialog
+o	- DialogButton: improved Transition display. Indicate Transition with red font.
+o	- ButtonObject -> createStructure
+o	DialogMovie: Add Transition button for all buttons in a DVD Menu.
+o	- Handle [Okay], [Calcel], and [No Transition]
+o	- DialogButtonTrans:
+o	  - If coming from menu, change title to Random transition
+o	  - Add Button [Select All] and [Clear All]
+o	  - If coming from menu, make dialog multi selection
+o	- Add handling of multiple buttons from multiple menus to a video source
+o	- Add handling of transitions to chapters of a video.
+o	- Improve generation of start image for SourceFileInfo.
+o	QRender: Improve verbosity when creating Transitions at -v 5
+o       Added masks library to build system.
+o	BUGFIX ButtonTransition: Fixed PAL size mismatch between target and generated transition.
+o	BUGFIX: Fixed crashing bug when opening DialogMovie for MovieObjects.
+o	BUGFIX: Fixed indentation in xml file if we add comments to it.
+o	BUGFIX: Crashes at loading, if we have two buttons to the Main Menu from a SubMenu. ( DVDLayoutArea )
+o	BUGFIX: Fixed memory leak with Intor / Extro movies.
+Added file overayobject.h
+Added file overlayobject.cpp
+Added file dialogbuttontrans.h
+Added file dialogbuttontrans.cpp
+Added file uidialogbuttontrans.ui
+Added file images/structure_icons.png
+Removed file uistructurewidget.ui
+
+
+Version 1.9.0 released June 10'th 2009
+o	Added Slideshow default parameters to DialogSetup.
+o	Added Zcech translation thanks to Pavel F.
+o	Added luma directory to alpha_trans.tar.bz2
+o	Improved Subtitles to handle <b> / <i> / <u> / <s> / <font ... > / <br>
+o	Added auto detection of multiple audio / subtitle steams for video sources
+o	Added RegionDialog to select DVD region code.
+o	Added region code logic into QDVDAuthor.
+o	Added region code logic into qrender.
+o	DVDLayout: Implement context menu for DVDLayout objects.
+o	DVDLayout: Add cursor keys handling, to move containers.
+o	Improved Audio track assignment for video files.
+o	SlideshowDialog: Improved usability, added handling of luma directory
+o	BIGFIX: Fixed DVD size calculations to be a better prediction.
+o	BUGFIX: DVDMenu Menu item does not show up translated. Need to re-create the DVDMenu to have propper language.
+o	BUGFIX: Language setting is not restored when re-starting QDVDAuthor.
+o	BUGFIX: After slideshow is rendered update the image in DVDLayout.
+o	BUGFIX: Initial thumb size in DVLayout is sometimes messed up, only showing the header.
+o	BUGFIX: QRender stops with more than 3 slideshows to render. Why ?
+o	BUGFIX: If the video length is adjusted it does not change the length in the AllSources tab.
++	DVDLayout does add more then 5 videos in one row instead of organizing it in multiple rows
+o	Added re-render to context menu for slideshows
+o	Auto rotate issue ... Found issue to be related to cheap camera. Information in exif header is not set.
+Added file importssa.h
+Added file importssa.cpp
+Added file exportssa.h
+Added file exportssa.cpp
+Added file qdvdauthor_cs.ts
+Added file dialogregion.h
+Added file dialogregion.cpp
+Added file uidialogregion.ui
+Added file dvd_regions.png
+Added file dialogalphatrans.h
+Added file dialogalphatrans.cpp
+Added file slidedefaults.h
+Added file slidedefaults.cpp
+Added Template WobblyWater ( http://www.youtube.com/watch?v=UknCNuJyj4E )
+
+
+Version 1.8.0 released May 3'rd 2009
+o	Added DVDLayout tab, to display current DVD layout structure.
+o	Add Button to enable / disable DVDLayout, Subtitles, and XML - tab.
+o	Implement Pan in DVDLayout
+o	Added a ComboBox to change between Orthogonal, and Linear router.
+o	Added print capabilities to DVDLayout.
+o	Added PrintPreview - dialog
+o	Added comment to Nodes in exportdvdauthor.cpp ( titleset and titles )
+o	Subtitle positioning in DV generated timestamps ( Fix color, and style too )
+o	CommandQueueDialog: Issue with resolvConvert. Wrong values set for subsequent commands.
+o	Summer2004: The last menu did not go to any videos. Seemed like all buttons were pointing to lala land.
+o	Fixed local_ffmpeg.sh script to conform with the latest ffmpeg build system.
+o	QRender: See if we can get video and audio in a slideshow with vids into synch.
+o	Slideshow information being lost between FewClickWizard and main app.
+o	Slideshow information being lost between DialogImages and main app.
+o	Fix all dependency issues with SYSTEM_PATH vs INSTALL_PATH
+o	Check for QPixmap handling in background thread. This can cause crashes.
+o	when adding audio to the menu, a dialog could ask me, to set the menu duration automatically to the audio length.
+o	MovieDialog: Add ( Loop[x] ) after ( Pause after movie is finished )
+o	BUGFIX: Fixed PREFIX issue with libraries.
+o	BUGFIX: UTF-8 support in dvdauthor, and spumux xml files.
+o	BUGFIX: DialogAlign does no longer function propperly.
+o	BUGFIX: QRender: Can't get ogg to work as background audio.
+o	BUGFIX: When looking at Subtitles in the XML tab before the subtitles were renderd.
+o	BUGFIX: When loading a project, "Main Menu VMGM" is not the active tab
+o	BUGFIX: For multiple subtitles per SourceFileEntry, the numbering sequence gets out-of-synch
+o	BUGFIX: DialogMovie: Geometry - tab for DVDMenu. Change Size will always warn about the background size even if correct.
+o	BUGFIX: VisibleRegion to init file.
+o	BUGFIX: Crashing bug, when cancel ButtonDialog for objects with shadow.
+o	BUGFIX: Crashing bug, ahen deleting Button right after it has been dragged over from the AllSources tab.
+o	BUGFIX: After changing the Project path, the temp path is not changed in the objects, which causes build failures.
+o	BUGFIX: ExportDVDAuthor: Movie shows up multiple times if pointed to from different menus.
+o	BUGFIX: Assigning multiple SourceFileInfos to Subtitle[0].
+o	BUGFIX: ./configure -c : The option of install is not functional.
+Added file qdvdauthor/images/pan.png
+Added file qdvdauthor/images/grid.png
+Added file qdvdauthor/images/print.png
+Added file uidvdlayout.ui
+Added file dvdlayoutgui.h
+Added file dvdlayoutgui.cpp
+Added file dvdlayoutarea.h
+Added file dvdlayoutarea.cpp
+Added file dvdlayoutrouter.h
+Added file dvdlayoutrouter.cpp
+Added file dvdlayoutpainter.h
+Added file dvdlayoutpainter.cpp
+Added file uiprintpreview.ui
+Added file printpreview.h
+Added file printpreview.cpp
+
+
+Version 1.7.0 Released January 17'th 2009
+o	Fixed issues with "Stretch / Stop / Loop" of MovieObjects.
+o	Fixed issue with videos > 1000 seconds.
+o	Fixed issue with SimpleDVD, and ComplexDVD plugins. The system path was set to the wrong path under certain circumstances.
+o	Fixed issue with SubtitlesGui. Ubuntu would expand the main window to max.
+o	Added display of slideshow length, and audio length to the Slideshow dialog.
+o	Add capability to open ChapterDialog with multiple SourceFileInfos.
+o	Added Alpha transitions to DialogSlideshow
+o	Added Alpha transition to QRender
+o	Added Alpha transition to CXmlSlideshow
+o	Added Alpha transition files to $SYSTEM/slideshow/transitions/alpha/
+o	-  Display warning in Dialog, if filters are missing on system.
+o	-  Dialog: Display filter preview if avail.
+o	-  Add ListCtrl with checks to enable which transitions to be used (default all, random)
+o	Added installation option for the alpha transition masks to configure.
+Added file qrender/run.h
+Added file qrender/run.cpp
+Added file qrender/filter.h
+Added file qrender/filter.cpp
+Added alpha_trans.tar.bz2 to qdvdauthor Homepage
+
+
+Version 1.6.1 Released December 13 2008
+o	Added --system-path to confiure script
+o	Added Sytem Path to configurator.
+o	Prepare and present NOVALUG presentation.
+o	BUGFIX: QRender. Newer version of ffmpeg changed which caused QRender to core-dump.
+o	BUGFIX: remove ffmpeg link in the qrender directory.
+
+
+Version 1.6.0 Released November 30 2008
+o	Simplified build process through command line, and GUI.
+o	Improved configurator to add new build steps and allow to build and install the whole app.
+o	Improved the configure script to handle now the whole app and all libs
+o	Added install option to the configure script.
+o	Added Audio Support for Slideshows
+o	- Handling of audio support ( fade-in, fade-out ).
+o	Added Support for VIDs to DialogImages
+o	Added Support for VIDs to QRender
+o	Added support for VIDs to the FewClickWizard.
+o	Added Vids support to VirtualFolder.
+o	Added AutoPlay to DialogImages's Previewer.
+0	Added Previewer to DialogFiles, so that you can now preview videos from within the Dialog instead of opening an external player.
+o	Added ffmpeg to all possible creation steps
+o	Added ffmpeg to the requirements
+o	Added keyword +DURATION+ to possible transcoding interface attributes ( previous we had only +starting_at+, and +ending_at+ )
+o	Added missing option to switch between PAL and NTSC for Slideshows.
+o	Added capability to switch between stretch, stop and loop of MovieObjects.
+o	If the user deletes an entry from the SourceToolbar, while it is being rendered: Need to also remove the task from the QRender - process.
+o	Appending now to QRender log, and status files instead of creating new ones each time.
+o	Subtitles need a working default in SubtitlesGui.
+o	Give SubtitlesGui a preview of generated subtitles.
+o	BUGFIX: Subtitle positioning in the final video.
+o	Set Default to mencoder transcoding instead of Videotrans.
+o	BUGFIX: FewClickWizard: Rotation information was being lost with the FewClickWizard.
+o	BUGFIX: FewClickWizard: Audio list was not handled for slideshows.
+o	BUGFIX: QDVDAuthor tries to start qrender even though it is already up and running.
+o	BUGFIX: If one slideshow exists and another is added, then the first will get re-created as well.
+o	BUGFIX: QRender: start.jpg, and end.jpg are all created at the same time, thus overwriting actual images.
+o	BUGFIX: QRender starts in the background if xml file has error.
+o	BUGFIX: No audio in slideshow fails slideshow
+o	BUGFIX: Multiple concurrent slideshows fail.
+o	BUGFIX: Account for length of vids when calculating slideshow length
+o	BUGFIX: AutoGroup does not work ...
+o	BUGFIX: DialogFiles: If Thumbs are animated and you drag it over then it'll crash the app.
+o	BUGFIX: If same percentage, then update of % in SFE is only shown in the first SFE.
+o	BUGFIX: When adding a new Slideshow in DialogImages, then the ToolBox should switch to the new, empty group.
+o	BUGFIX: ComplexDVD When more then 6 videos, then the forward button is missing.
+o	BUGFIX: scanImages did not return the dateCreated of the image.
+o	BUGFIX: TempDialog does take /tmp dir into consideration. Should only consider temp project dirs.
+o	BUGFIX: Templates require to be -rw-. Fix in TemplateWizard
+o	BUGFIX: Opening DialogFiles will remove slideshow object from SourceFileInfo.
+o	BUGFIX: libjhead does not read the propper JHead dateCreated info.
+o	BUGFIX: AutoGroup adds videos in reverse order.
+Added file qdvdauthor/images/default.jpg
+Added file qdvdauthor/images/text_vtop.png
+Added file qdvdauthor/images/text_cvtop.png
+Added file qdvdauthor/images/text_vbottom.png
+Added file qdvdauthor/images/text_cvbottom.png
+
+
+Version 1.5.0 Released August 2'nd 2008
+o	Many changes. Please read INSTALL
+o	Test install in VirtualBox Kubuntu / Kubuntu / Fedora9 etc ...
+o	InterfaceLift has changed access to random images. Replaced with Wallpapersarchive.com, and HDRCreme.com.
+	- Wallpapersarchive.com : All Free desktop wallpapers found on this site have been collected from varying free wallpaper sources across the web and are believed to be in the "public domain". If you are the rightful owner of any photo or graphic posted here, and object to them being displayed, please contact us and it will be removed promptly.
+o	Added new dialog DialogImages.
+o	DialogImages: DialogFiles: Added to the title with NrOfImages in current IconView.
+o	DialogImages: "First Group" to be renamed to "Slideshow"
+o	DialogImages: DialogFiles : Account for existing SFEs when assigning the empty group name.
+o	DialogFiles : When no group is created BUT some files are selected, then create a group for it. 
+o	DialogSlideshow: Display MessageBox for the Audiopart which is not yet working.
+o	Added libjhead from jhead executable.
+o	Install libjhead under $PREFIX/share/qdvdauthor/lib
+o	Scanning of Exif file infos and thumbnails from Exif.
+o	Removed qslideshow source-files from qdvdauthor project ( replaced through DialogImages )
+o	Added caching system for images.
+o	Implement overlay over Slideshow icon with % of progress of slideshow generation.
+o	Implement auto-rotate with the help of EXIF info.
+o	Added new dialog to define slideshow parameters of a group (Slideshow).
+o	BUGFIX: DownloadTemplates : Prevent dialog from pressing Download more then once.
+o	BUGFIX: DialogFiles : video / image files are now always determined through apsPath, this way only one record in the cache per file will exist.
+o	BUGFIX: libjhead does not generate the install target the first run.
+o	BUGFIX: libsimpledvd, and libcomplexdvd do not generate the install target on the first run.
+o	BUGFIX: DialogShadow : does not accept maual input for distance.
+o	BUGFIX: ButtonObjects with masks show up in RED instead of the actual image.
+o	BUGFIX: For SimpleDVD, ComplexDVD set MenuColors according to the Button colors.
+o	BUGFIX: Missed start message after retrieving all images.
+o	BUGFIX: FewClickWizard the buttons do not show up correctly in dvdauthor.xml -> build will fail
+o	BUGFIX: TemplateWizard had issues with ImageObjects vs MovieObjects.
+o	BUGFIX: DialogFiles: Resizing issues.
+o	BUGFIX: plugins need to handle Slideshows correctly. Currently the SFE is not generated correctly.
+o	BUGFIX: Solve Crashing of X-Windows when opening DialogExecute ( nvidia )
+o	Improvement: cache: store DB and VirtualFolder files first to a temp file and move them after all has been written correctly to prevent data loss.
+o	Improvement: Feedback to include QRender output ( /tmp/qrender/status.txt and log.txt )
+o	Improvement: TemplateWizard. Refuse to upload templates w/o defined DropZones.
+o	Improvement: re-scan all information if SourceFileInfo qsState is not "Ok"
+o	Improvement: DVDMenu: Allow to change Object of a button ( I.e. replace MovieObject with ImageObject etc )
+o	FewClickWizard should create Temp dir and dvd Dir if non existing.
+o	micro buttons handling while slideshow creation.
+o	Kick off slideshow creation if things have changed.
+o	Create Status file for crash recovery
+o	Allow to disable the intro page of slideshows.
+o	Add new context menu item for Slideshow Infos in the SourceToolBar.
+o	Start QRender in deamon mode if not running.
+o	QRender: Comparison of XML input file in case something has changed.
+o	QRender: Possibility to run multiple instances ( from command line )
+o	QRender: Default to deamon mode and assign a port
+o	QRender: One-Server - mode ( I.e. don't send files over socket )
+o	QRender: Kill process after success if on same server.
+o	QDVDAuthor: Limit number of concurrent threads
+o	QDVDAuthor: Propper handling of [CreateDVD] - button wrt QRender
+o	CodeCleanup: Give SourceFilInfo its own writeProjectFile - function !
+o	Sending of KillThread if E.g. Slideshow was removed.
+o	Fix clone DVD to point buttons to the cloned menu instead of the orig menu.
+o	Fix new template MusicDVD, to do the right thing.
+o	Added new script to DL, configure, compile and install ffmpeg in local build tree.
+o	Eliminated message "Warning, the slideshow <XYZ> is not finished."
+o	Added Wiki to home page.
+Added dependency to jhead 2.82 ( http://www.sentex.net/~mwandel/jhead/ )
+Removed dependency on jhead and created a shared lib with source instead
+Removed file uisourcefiledialog.ui
+Removed file sourcefiledialog.cpp
+Removed file sourcefiledialog.h
+Removed file qslideshow/xml_slideshow.cpp
+Removed file qslideshow/xml_slideshow.h
+Added file uipreviewer.ui
+Added file previewer.cpp
+Added file previewer.h
+Added file uislideshow.ui
+Added file dialogslideshow.cpp
+Added file dialogslideshow.h
+Added file render_client.cpp
+Added file render_client.h
+Added file qrender/README
+Added file qrender/INSTALL
+Added file qrender/local_ffmpeg.sh
+Added file qrender/qrender.pro
+Added file qrender/main.cpp
+Added file qrender/shared.h
+Added file qrender/server.cpp
+Added file qrender/server.h
+Added file qrender/render.cpp
+Added file qrender/render.h
+Added file qrender/utils.cpp
+Added file qrender/utils.h
+Added file qrender/slideshow.cpp
+Added file qrender/slideshow.h
+Added file qrender/encoder.cpp
+Added file qrender/encoder.h
+Added file qrender/parser.cpp
+Added file qrender/parser.h
+Added file qrender/logger.cpp
+Added file qrender/logger.h
+Added file qrender/engine/ffmpeg_enc.cpp
+Added file qrender/engine/ffmpeg_enc.h
+Added file xml_slideshow.cpp
+Added file xml_slideshow.h
+Added Template MusicDVD
+Added Template Cinema
+Added Template Horizon
+Added Screencast http://qtdvd.com/guides/FewClickWizard.html
+New distributable libjhead.so
+New distributable qrender
+Removed distributable of the old qrender ( qdvdauthor/qrender )
+
+
+Version 1.2.0 Released May 14'th 2008
+o	Added OneClickDVD wizard.
+o	Added Error Correctoin ECC to Burn section of the CommandQueueDialog.
+o	DialogFiles : VirtualFolder handles now multiple selection.
+o	QMPlayerWidget: Resolved issues with zombie threads.
+o	Plugins : Allow to set PAL / NTSC
+o	Included dvdisaster to dependencies as recommended.
+Added File uioneclickwizard.ui
+Added File oneclickwizard.cpp
+Added File oneclickwizard.h
+Added File dialogimages.cpp
+Added File dialogimages.h
+Added File silence.ac3
+Added File images/wizard.png
+Added File plugins/sourcegroups.h
+Added File plugins/testplugs/testplugs.pro
+Added File plugins/testplugs/testplugs.cpp
+Added File plugins/testplugs/testplugs.h
+Added File plugins/testplugs/uiMainForm.ui
+Added File plugins/simpedvd/simpledvd.pro
+Added File plugins/simpedvd/simpledvd.cpp
+Added File plugins/simpedvd/simpledvd.h
+Added File plugins/simpedvd/uisimpledvd.ui
+Added File plugins/complexdvd/uisimpledvd.ui
+Added File plugins/complexdvd/complexdvd.pro
+Added File plugins/complexdvd/simpledvd.cpp
+Added File plugins/complexdvd/simpledvd.h
+Added dependency to dvdisaster ( for ECC support ) 
+New distributable : libsimpledvd.so*
+New distributable : libcomplexdvd.so*
+New distributable : simpledvd/main.png
+New distributable : simpledvd/next.png
+New distributable : simpledvd/prev.png
+New distributable : simpledvd/background.jpg
+New distributable : complexdvd/main.png
+New distributable : complexdvd/next.png
+New distributable : complexdvd/prev.png
+New distributable : complexdvd/background.jpg
+
+
+Version 1.1.0 Released April 3'rd 2008
+o	Fixed some issues with TextObjects.
+o	Fixed DialogTextFont's handling of the 'sit to size' function.
+o	Grouped Subtitles generation in the CommandQueueDialog.
+o	Fixed file order when adding source files.
+o	Fixed some minor things in DialogMovie.
+o	Implemented the miniButtons in the SourceToolbar.
+o	Remove Old SourceEntry Dialog.
+
+Version 1.0.0 Released January 13'th 2008
+o	DialogMovie: Implement [Import] button in the Chapters tab.
+o	Changed rotating objects handling. Now you have to press the Ctrl key.
+o	Source video is in the DVD multiple times ... Why ?
+o	BUGFIX: Import::DVDAuthor crashes when coming from a KDEnlive project
+o	BUGFIX: Crash when SourceFileEntry is deleted and SourceFileInfos are used in PlayMultiple.
+o	BUGFIX: VMGM buttons jump to menu entry root first instead directly to the target titleset/menu/title
+o	Display file names in header when creating Subtitles 
+o	ButtonDialog, Display # of multiple files ( + menu ? ) to indicate this feat is enabled.
+o	How to avoid re-creating subtitles if they already exist and nothing has changed. ( Allow user override )
+o	DialogSelect: Selecting PlayMultiple does not re-highlight the next item in the All-ListBox
+o	DialogSelect: PlayMultiple sorting does not work when clicking onto the header.
+o	DialogSelect: Selecting multiple files at once does not work.
+o	Duration of added background audio in mp3 format vs Menu length.
+o	Grey out menu item [Add Custom File] [Add Directory]
+o	When cropping a video ( change the start offset ) then the chapters have to be shifted as well.
+o	Not all videos in the dvdauthor.xml file had chapters="00:00:00.000"
+o	When changing hight for TextButtons the change is only reflected in the Button, and not in the layers.
+o	Started win32 port ( Note, will hold off untill after V1.0 Final relese and after porting to Qt4.x ).
+	- create working MPlayerInfo / MPlayerWidget / QMPlayerWidget on windows
+	- find all required tools to create a dvd
+	- scan for <tool>.exe under windows.
+	- /tmp  is under d:/tmp/
+	- $HOME is under c:/Documents adn Settings/varol/
+o	BUGFIX: Fix crash when deleting a DVDMenu
+o	Implement SelectionDialog to easily handle 100+ source videos.
+o	- Integrate easy way to group videos into SourceFileEntries.
+o	- Pre-sort by creation date/time
+o	- When mouse hovers over MovieItem then display 10 frames of the movie ( adjustable )
+o	- Easily adjust size ( slider control ) of thumbnails.
+o	Add cache to buffer thumbs in tmp directory ( ~/.qdvdauthor/cache )
+o	  - Use hash to uniquely ID the video ( based on FileName, FileSize and VideoLength )
+o	Resize of the SourceToolbar does not work.
+o	Resize of the StructureToolbar does not work.
+o	Moving an item around re-sets the maximized / minimized state of the tree
+o	StructureToolbar, changing anything will change the state of the tree.
+o	ConvertDialog : Converting of dropped images ( ButtonLibrary ) Creates White background where there should be trasparent.
+o	DialogFiles: Implement displaying of Thumbs even if they are not accesible ( USB drive )
+Added file uidialogfiles.ui
+Added file dialogfiles.cpp
+Added file dialogfiles.h
+Added file importchapter.cpp
+Added file importchapter.h
+Added file images/star.png
+Added file uidialogvfolder.cpp
+Added file dialogvfolder.cpp
+Added file dialogvfolder.h
+Added file thumbcache.cpp
+Added file thumbcache.h
+
+
+Version 1.0.0. RC3 Released November 22'th 2007
+o	Enforce 36 button limit per DVDMenu.
+o	Removed jumppad from dvdauthor.xml file
+o	Optimized JumpTable to no longer create duplicate Jumps in a Titleset.
+o	Added checkbox to keep ovieObjects the same length as the DVDMenu.
+o	Added SemiTransparent masks to ButtonLibrary / Images.
+o	Added new class to handle colors with alpha channels.
+o	Added transparency to color selection for masks.
+o	Added support to assign a menu to a defined titleset.
+o	Added support to assign a menu to a submenu in a specified titleset.
+o	ButtonDialog: Added [Play Multiple] option for a button.
+o	Added Dialog to select multiple video source files for the new [Play Multiple] feature.
+o	Improve ButtonDialog to allow final destination menu for Play Multiple.
+o	Added Check box in ButtonDialog to loop the PlayMultiple videos.
+o	ButtonDialog: Added radio box to switch between Mask and Frame as Highlighted / Selected Layer.
+o	ButtonDialog: Added Color selection to Highlighted / Selected - tab.
+o	Modified Color selection for Masks. Now you can only choose from one of the four colors.
+o	Renaming menus should change the affected buttons PlayMultple entry.
+o	Deleting menus should change the affected buttons PlayMultple entry.
+o	Improve MovieDialog, to disallow assignment of sub menu number 0, and 1 (set by QDVDAuthor)
+o	Added new menu item to Context Menu : "Delete Shadow" if shadow exist.
+o	Added aspect ratio to mencoder transcoding option.
+o	Added a new warning if audio length, MovieObject length, and length of menu do not line up.
+o	Default MovieObject to be [Same Length as DVDMenu].
+o	If a SourceFileInfo is removed no check is performed if the source is in use.
+o	BUGFIX: Fix Open Recent files ...
+o	BUGFIX: Crashing in file selection dialog, if closed before preview was created.
+o	BUGFIX: ManDialog, search field does only work in the first tab ( first command )
+o	BUGFIX: When renaming a SubMenu, all affected buttons are now changed accordingly.
+o	BUGFIX: ThumbnailDialog, when creating MovieObjects, the buttons would all start at 00:00:00
+o	BUGFIX: SetupDialog, When selecting Drag'n Drop MovieObjects you could leave the duration at 0.
+o	BUGFIX: File open Dialog for background images loads only the first image.
+o	BUGFIX: Add flv to possible movie filter.
+o	BUGFIX: TextFontDialog, size does now stay relatively clse to the selected size and will no longer decrease.
+o	BUGFIX: Rendering multiple MovieObjects in one DVDMenu would fail.
+o	BUGFIX: MovieDialog : MovieObjects not working correctly.
+o	- MovieObjects do not display the videos correct length. Instead they use the length of the clip.
+o	- Preview thumbnails are not generated from the whole Video.
+o	- MovieObject::menuLength ( ) not handled in CreateDVD
+o	- MovieDialog : Preview window should show correct frame after initialization.
+o	BUGFIX: AutoChapters does not work correctly if start is set to anything but 0;
+o	BUGFIX: MovieDialog : MovieBackground not working correctly.
+o	BUGFIX: ImageDialog pops up twice when edit MovieButton.
+o	BUGFIX: crahsing when TextButton -> [Edit Object ...
+o	BUGFIX: kino - import filter ( -a -d /home/varol/dvdproject/kino-dvdauthor.xml )
+o	BUGFIX: Buttons from Templates are now generated according the the settings in the Drop down tab of the Setup dialog ( ImageButtons or MovieButtons ).
+o	BUGFIX: DialogFrame initial size was set to 250 x 250.
+o	BUGFIX: Subtitles fix issues due to new color scheme.
+-	Prep Template competition for best X-Mas Template. Implement voting section.
+Added file uidialogselect.ui 
+Added file dialogselect.cpp
+Added file dialogselect.h
+Added file maskobject.cpp
+Added file maskobject.h
+Added file rgba.cpp
+Added file rgba.h
+
+
+Version 1.0.0. RC2 Released October 7'th 2007
+o	Added capability to add multiple audio tracks to a DVDMenu.
+o	Added capability to assign language codes to the audio tracks.
+o	Enhanced MovieDialog->Audio-tab. Added [Edit] button to Audio and Subtitles.
+o	When adding a new sound file under [ DVDMenu->properties->Audio tab->Add Audio ], nothing happened.
+o	transcoding audio, set default for all to -b 0.192 instead of -b 128
+o	transcoding audio, concat multile audio files into one file
+o	transcoding audio, use transcoded file to create menu / video instead of the original.
+o	Add multiple audio to Video file was broken.
+o	Auto transcode audio from multiple audio tracks for video files.
+o	Auto transcode audio files for DVDMenus.
+o	BUGFIX: When using ThumbnailDialog, selecting Text as "None" will create empty TextObjects.
+o	BUGFIX: jpeg2yuv and jpegtopnm do not take menu lenth into account ( -n XX ).
+o	BUGFIX: mpeg2enc requires -a 2 ( 4:3 ) or -a 3 ( 16:9 )
+o	BUGFIX: buttons are now always on even line numbers.
+o	BUGFIX: Static menus are now created according to their duration and are no longer hardcoded to 50  frames.
+
+
+Version 1.0.0. RC1 Released May 13'th 2007
+o	BUGFIX: Mask generation did not work for screen color depths of 16 bit instead of 24/32 bit.
+o	TextObject, assign name to be only the first 20 characters of the text.
+o	Added ButtonLibrary
+o	New control widget for QPlayer with buttons to control the DVD menu.
+o	New Controls for QPlayer ...
+o	Add Screenshot button to toolbar.
+o	Added Plugin interface
+o	Added basic proof of concept dialog
+o	When adding a file which needs remux only, After closing and starting Q again it is marked for a complete transcoding and not remux - only.
+o	I can not 'e'dit the re-mux commands, though I can edit transcoding commands.
+o	Why is pal not detected for autotranscoded vid material ?
+o	- Remove HLayer / VLayer completely ... No one uses it. It is most likely broken anyways.
+o	- New Menu Item : "Add from Library ..." -> Opens new LibraryDialog. 
+o	  - Similar methology as ThumbnailDialog (Drag'n Drop
+o	  - Tabbed previews of buttons.
+o	  - handle no button dir found thingy
+o	  - Set the correct transparency. -> Filter black +0.01 / white +0.01, set transparency for these colors to 1.0.
+o	Implemented Plugin::MenuSlide - dialog to create a slideshow in 'semi 3D'
+o	 Design dialog
+o	 Create the Slideshow algorithm
+o	 Add a preview to the dialog.
+o	Fixed AnimationAttributes for ImageObjects ( iStartFrame, iStopFrame, fStartX, fStartY )
+o	added AnimationAttribute to dynamically change the image ( fileName )
+o	Added AnimationAttribute to enable KenBurns.
+o	Implemented logic to convert a XML text string to a DVDMenu (just like the TemplateDialog does)
+o	Make default dv transcode example work off the bat.
+o	If new transcode (from auto transcode), def. params do not show correctly in MovieDialog.
+Added File plugins/interface.h
+Added File plugins/menuslide/uimenuslide.ui
+Added File plugins/menuslide/menuslide.pro
+Added File plugins/menuslide/menuslide.cpp
+Added File plugins/menuslide/menuslide.h
+Added File plugins/menuslide/main.cpp
+Added File uidialoglibrary.ui
+Added file dialoglibrary.cpp
+Added File dialoglibrary.h
+
+
+Version 0.1.5.beta, Released February 3'rd 2007
+o	BUGFIX: Project files will overwrites files if they have just any extension.
+o	BUGFIX: MPlayerWidget had problems parsing audio file values (freezing QDVDAuthor for some seconds)
+o	BUGFIX: fixed crash when dragging a SourceFileInfo onto its own SourceFileEntry.
+o	BUGFIX: Templates would not work if the SourceFiles had '<' or '>' in the name.
+o	BUGFIX: MediaInterface was missing support for volume control.
+o	BUGFIX: QPlayer did not handle seekPosition.
+o	Added Subtitle number to Subtitles interface.
+o	Backup qdvdauthor.ini file before resetting.
+o	Implement Language settigs in the dvdauthor.XML - file for audio streams.
+o	Add Basic transcoding options to the Audio-LAnguage selection Dialog.
+o	Added Flash user guides to the HomePage.
+o	Added new DialogAudio to handle multiple audio streams settings.
+o	Added new SmallDialogAudio to handle audio transcoding options only.
+o	Added new sialog to assign language codes to a subtitle.
+o	Added new tab in MovieDialog to handle multiple audio / subtitle settings for a video.
+o	AudioDialog : Should not be able to select Track # 0 for audio. Track 0 is reserved for the original audio track of the video.
+o	Handle storing of audio info for the SourceFileEntry ...
+o	ContextMenu for SourceFileEntry : add audio language settings to open AudioDialog.
+o	If SourceFileInfo has audio tracks 0,2 then we need to insert a empty audio track at pos 1.
+o	If SourceFileEntry has a gap in arrayAudioEntries, we need to fill in the gaps with e.g."en"
+o	Handle drag'n drop of SourceFileInfos in the SourceToolbar with respect to the audio/subtitles settings.
+o	Add default command for silence audio creation, to simply copy the file from the PREFIX directory to the temp directory.
+o	Re-design the SubtitlesGui of QDVDAuthor.
+o	Improve subtitles generation. You can now defing a frame around letters.
+o	Display progress dialog when generating the subtitles images
+o	Create option to create subtitles text based.
+o	Implement Text Based Subtitles
+o	Implement BG Transparency slider 
+o	Implement dv2sub into overall creation procress
+	o If enabled create srt and add it to video.
+o	Added DialogThumbnail to handle chapter menu creation.
+	o Handle multiple selection in ListBox / ListView
+o	Added DialogFont to handle font and color (no text).
+o	Fixed dropping of images / movies onto a DVDMenu.
+o	Implement Language settings for Subtitle streams.
+o	Add 'Original audio track" to Audio list for video sources.
+o	Handle logic to enable "re-multiplex-only" if VideoSource has multiple audio tracks.
+o	Implement Audio transcoding part of QDVDAuthor
+o	Enhanced COmmandQueueDialog to dynamically change no comments too (if there are mltiple comments in qdvdauthor.ini)
+o	Added audio_streams.html
+Added File uidialogsubtitle.ui
+Added File uidialogaudio.ui
+Added File dialogaudio.cpp
+Added File dialogaudio.h
+Added File silence.mp2
+Added File subtitles.cpp
+Added File subtitles.h
+Added File importsub.cpp
+Added File importsub.h
+Added File uidialogthumbnail.ui
+Added File dialogthumbnail.cpp
+Added File dialogthumbnail.h
+Added File uidialogfont.ui
+Added File dialogfont.cpp
+Added File dialogfont.h
+Added File smalldialogaudio.cpp
+Added File smalldialogaudio.h
+
+
+Version 0.1.4.beta, Released November 7'th 2006
+o	Implemented Cut / Copy / Past for MenuObjects
+o	Convert the whole project from NTSC to PAL [ File->Convert ...]
+o	Convert the whole project from PAL to NTSC [ File->Convert ...]
+o 	ConvertDialog: If 'keep original Videos', then ln -s to tmp, rename fileName in sourceFileInfo, adjust buttonobjects.
+o	Create Chooser menu.
+o	Implement Clone Menu
+o	Implement Convert Format on a per menu basis.
+o	Added DialogAlign to align multiple objects.
+o	Apply/Edit Shadows to multiple objects
+o	The DVD does now keep the last active button when jumping to a video. 
+o	The DVD does now remember the last active button when a movie menu starts over again (after the end of the movie)
+o	Added capability to set system register through ButtonDialog.
+o	Add capabilities to set audio / subtitles for a button. (After advanced)
+o	Removed "No time left" - dialog when creating a DVD. Does not need to show up at creation process to block the execution !
+o	Disable auto transcde when getting the thumbnail in the MovieDialog.
+o	BUGFIX: Fixed broken autosave functionality.
+o	BUGFIX: If button has manual modif, then preserver (dvdauthorexport.cpp)
+o	BUGFIX: If loading from dvdauthor.xml, then every command before call or jump is to be stored in the qsPreAction variable. ( remove {}-brakets )
+o	BUGFIX: replace all occurences of "aofile" with "pcm:file=" for mplayer / mencoder.
+Added File dialogconvert.h
+Added File dialogconvert.cpp
+Added File uidialogconvert.ui
+Added File dialogalign.h
+Added File dialogalign.cpp
+Added File uidialogalign.ui
+Added File doc/html/en/system_register.html
+Removed File dvdinfo.h
+Removed File dvdinfo.cpp
+
+
+Version 0.1.3.beta, Released October 7'th 2006
+o	Add MirrorObject.
+o	Re-write of the ImageDialog, to get rid of code complexity and to support Shadows.
+o	Store sound files in templates.
+o	Added [Edit Movie ...] or [Edit Image ...] to the Button context menu.
+o	Added [Movie Properties ...] or [Image Properties ...] to the Button context menu.
+o	Added a [Analyze] button in the CommandExecutionDialog.
+o	Implement Assign to titleset on a per SourceFileInfo ...
+o	If user sets titleset number, then keep it clear off automatically assigned video streams 
+o	-  I.e. only add those videos that were assigned by the user.
+o	Improvement of the dvdauthor xml - file creation logic.
+o	DVD movies do now return to the SubMenu instead of the VMGM after finishing to play.
+o	This image has the wrong size Message Box. Include current dimensions.
+o	Create MovieBackground template ( Hammock ).
+o	Create Audio template ( Peace ).
+o	Create Mirror template ( Blue Planet ).
+o	TemplateCreationDialog, take care of Thumbnail position ... I.e. if dragged from the left side, use the thumbnail instead of first frame. 
+o	Implement type / category / width / height into index.xml
+o	Store Category in template.xml
+o	After Loading of template (with the TemplateWizard) resizing Image/Movies will make the object much smaller.
+o	Include capability to set Titleset for the video source files.
+o	BUGFIX: Delete-temp-folder displays negative total.
+o	BUGFIX: Add multiple audio files in one SourceFileEntry messes up header.
+o	BUGFIX: DVD spec requirement, modify exportdvdauthor.cpp such that in case here is an empty titleset, we need to add <menus><pgc/></menus> to it.
+o	BUGFIX: MenuObject handling. Dragging an Image over does not put it in the right space.
+o	BUGFIX: Redo the image dialog for QDVDAuthor (leave as is in QSlideshow)
+o	BUGFIX: ShadowDialog If ShadowDialog no longer shadow exist then delete shadow ...
+o	BUGFIX: Core if textobject is unbuttoned, text changed and then again created as a button. Crashes when pressin OK in the Button dialog.
+Added Template Blue Planet
+Added Template Peace
+Added Template Hammock (animated)
+Added file uidialogimage.ui
+Added file dialogimage.cpp
+Added file dialogimage.h
+Added file errormessages.cpp
+Added file errormessages.h
+
+
+Version 0.1.2 beta, released Augus 25'th 2006
+o	Implemented [As Thumbnail] button in the MovieDialog.
+o	Implement DialogShadow to create / modify shadows.
+o	Implement Shadows for all MenuObjects
+o	Implemented version checking for templates.
+o	Added capability to add an intro / extro video to a menu.
+o	Added capability to remove a intro / extro from the menu.
+o	Added capability to delete sound files from the StructureToolbar.
+o	Added dynamic scaling/moving/rotating to the ImagePreview.
+o	Added fix for ButtonObjects which are out-of-bounds ( I.e. -14 or 788 etc )
+o	ButtonObject -> delete highlighted / selcted layer when unbutton.
+o	Improved dynamic resizing of object. Now possible through hot spots.
+o 	Change cursor appearance when over active border
+o	All source files are now automatically transcoded into a proposed mpeg2 format.
+o	Created a total of 13 new templates.
+o	Created a user guide for an animated menu.
+o	Removed the preview in the OpenFilesDialog for audio file
+o	Fix nightly.sh to ignore CVS dirs.
+o	ButtonDialog : For MovieObjects the thumbnailing part does not work.
+o	TemplateDialog. Default to Main Menu VMGM if menu is empty.
+o	ImageDialog : When returning, the object is displayed correctly but when selecting the object it is distorted.
+o	ImageDialog : when ShareX / ShareY will set wrong values (X swapped with Y ???) but display it correctly.
+o	Removed res, aspect from the AnimationDialog and added pos to its available options.
+o	BUGFIX: Fixed issues with AnimationAttributes.
+o	BUGFIX: Sound file (mp2) appears in the VideoSourceTab ...
+o	BUGFIX: mp2 shows error instead of "Sound File"
+o	BUGFIX: If movie length is 00:00:00 - 00:00:00 then pressing AUto Chapters will crash the MovieDialog.
+o	BUGFIX: MovieDialog -> ChaptersTab : "End at" not set.
+o	BUGFIX: Q crashes when deleting a SourceFileEntry while still rendering.
+o	BUGFIX: Fixed issue when creating menu objects.
+o	BUGFIX: Fixed issue when using templates "Could not find associated ButtonObject in JumpTables"
+o	BUGFIX: TemplateWizard: when clicking into dropZone, the filter does not work as expected.
+o 	BUGFIX: Template creation, determine the EntryName by parsing through the currently existng SourceFileEntries and trying to find the defined file.
+o	BUGFIX: Fixed crash bug, when deleting SourceEntries from the SourceToolBar.
+o	BUGFIX: When filtering colors of an image, refresh the shadow ...
+o	BUGFIX: Template Download - dialog: thumbnails do not appear the first time when connecting to the server.
+o	BUGFIX: Template Install  - dialog: thumbnail.png is not copied over to <name>.png
+o	BUGFIX: ImageDialog : Does not properly handle color keying.
+Added Template Tatry
+Added Template Sea
+Added Template Sparks
+Added Template Shells
+Added Template Beach
+Added Template Sunset
+Added Template Space (animated)
+Added Template World
+Added Template Flammes
+Added Template Western
+Added Template Lamps
+Added Template Oldstyle2
+Added Template Stamps
+Added file uidialogshadow.ui
+Added file dialogshadow.cpp
+Added file dialogshadow.h
+Added file shadowobject.cpp
+Added file shadowobject.h
+
+
+Version 0.1.1 beta, released July 4'th 2006.
+o	Added dialog to download templates off the web.
+o	Added dialog to create, install and upload a template.
+o	Added dialog to manually adjust auto detected values of a media stream.
+o	Added static MessageBox::html ( ... ) to start implementing some help buttons.
+o	Added image/video preview to the fileOpenDialogs.
+o	Added Videotrans to the possible transcoding options.
+o	Added detection of VOBUs in Mpeg2 streams. If not present the file will be marked for re-multiplexing.
+o	Improved color scheme of SourceToolBar.
+o	Transcode All does not change the background color.
+o	Fixed some issues with transcode command.
+o	Change cursor shape for active objects
+o	Implemented multiple selection in the Menu editor.
+o	Implemented doublebuffering for the DVDMenu.
+o	Implemented simple help in the CommandQueueDialog.
+o	Implemented Help buttons in TemplateDownload, and the TemplateDialog.
+o	Fixed DVDMenu 2 pixel border offset. (Clckin on an object does not 'lift' it anymore.)
+o	Fix ImageObject rotation etc, to complete dynamic modification of objects.
+o	Improve Frame's name assignement. Currently all have "Frame (255, 255, 20)"
+o	Handle Author/Contact/Header/TemplateComment fields from the generated templates.
+	o Store and Read Author/Contact/Header/TemplateComment info in qdvdauthor init file.
+o	Check if buttons overlaying each other. This is causing problems in some DVD players.
+o	Only allow selection of [DVDMenu->Store as Template ...] if the menu has a background.
+o	Init video streams with post command ( call vmgm menu 1; )
+o	HOMEPAGE: Add description for KXineWidget/QXineWidget/QMPlayerWidget.
+o	HOMEPAGE: Added Treeview control to the web page.
+o	BUGFIX: Changed the default command for creating the empty .mp2 from 48 to 48000.
+o	BUGFIX: if I try to generate a slide show with no sound, dvd-slideshow creates a .wav file of infinite length (which, of course, never finishes...) and crashes when the device is full.
+o	BUGFIX: If no background is checked, then dvd-slideshow - preview does not work.
+o	BUGFIX: FIxed an issue with the first-time scan.
+o	BUGFIX: Fixed issue with autodetected aspect ratio.
+o	BUGFIX: Fixed crash when deleting object while selected.
+o	BUGFIX: Fixed templates basic3 / basic6 and movie_line. 
+o	BUGFIX: Fixed typo in xml project files. 
+	 	Note: To fix an older project file use the script http://qdvdauthor.sf.net/fixit.sh
+o	BUGFIX: Only the last project directory was deleted if [Delete all old project dirs] was selected.
+o	BUGFIX: Issue with 4 colors and fonts crept up again. QFont::NoAntialiasing is being ignored. Found workaround.
+o	BUGFIX: under certain ciurcumstances some of the video streams would disappear after clicking CreateDVD.
+o	BUGFIX: QDVDAuthor would crash with more then 12 menus created.
+o	BUGFIX: the paths were no longer added to the tools.
+o	BUGFIX: static Qt functions on SuSE 10.x under KDE deviate from documented behviour.
+o	BUGFIX: crashing DialogMovie for Xine-Lib, when xineStream is not yet defined.
+Added file filepreviewdialog.h
+Added file filepreviewdialog.cpp
+Added file messagebox.h
+Added file messagebox.cpp
+Added file dialogmediainfo.h
+Added file dialogmediainfo.cpp
+Added file uidialogmediainfo.ui
+Added file uitemplatedownload.ui
+Added file templatedownload.h
+Added file templatedownload.cpp
+Added file uicreatetemplate.ui
+Added file dialogcreatetemplate.h
+Added file dialogcreatetemplate.cpp
+
+
+
+Version 0.1.0 beta, released December 23'rd 2005
+o	Add command line support.
+o	-k kinoFile -d dvdauthorFile -p projectFile -x (execute) -a (automatic menu creation) -o outputProjectFile
+o	Create Export::Srt, to export subtitle files
+o	Implement dvdauthor/spumux import filter.
+o	Implement kino smil file format import filter.
+o	Implement basic subtitle generator.
+o	Implement menu ratio pass through to the xml file.
+o	Implement Version/Build date into the About Dialog.
+o       create Import::DVDAuthor namespace/class to import dvdauthor.xml format ...
+o       create Import::Spumux    namespace/class to import spumux.xml format ...
+o       Create Project from the read in files.
+o	- Handle SourceFileEntry->qsPre / SourceFileEntry->qsPost
+o	-> Implement GUI
+o	Changed QTDIR path detection schemem in configure and in configurator.ui.h
+o	Typing the font size with the keyboard doesn't change it Font/Text dialog.
+o	Creating an Object : it would be helpful if a tooltip with the current size in pixels would appear (when making the rect selection)
+o	Improved exported shell script. You can now run each command at a time (E.g. script.sh 1 2 3 4 will run the first four steps).This helps you to pinpoint problems.
+o	Store language settings in ini - file.
+o	TemplateDialog, when choosing the source, display current videos from the project on the left side, add button at the bottom [From File]
+o	QString contains vs find for TemplateDialog.
+o	- dont create new SourceFileEntries for files already present !!!
+o	Transcode all files in a SourceFileEntry - option ...
+o	Created document on how to create Templates.
+o	Implemented multi color keying - delta offset in % per color
+o	finish up CommandQueueGUI part.
+o	MovieObject : set slider to the right pos at startup.
+o	StartStopSlider : fixed wrong length handling.
+o	Click on chapter in MovieDialog does not jump to this position ...
+o	Fixed problems with ä,ö,ü. They are saved in the xml file but when trying to read will deleted them (for example a "für" is shown as "fr"). 
+o	Cleaned up the ImageManipulator class and moved it from xml_slideshow.h /.cpp to modifiers.h / .cpp.
+o	- Check out and verify functionality.
+o	- Added listColorKeys for color keying.
+o	- Add the interface for ImageObjects.
+o	- Implement the algorithm to filter out the specified colors.
+o     Improve on the QSlideshow dialog.
+o	- Continue on dvd-slideshow. See why creation of wav fails on my box
+o	- DblClick on ImageLine will ignore the rotation.
+o	- import chapters info.  
+o	- when slideshow creation is in progress, don't allow to drag it over.
+o	- autosave after ...
+o	- SlideshowDialog : When edit Image, no backgrounds shows up.
+o	- Automatically adjust output name of the slideshow if file exists already.
+o	- bin/bash issue.
+o	- every image has to get resized even the right sizes.
+o	- Modified dvd-slideshow to fix two bugs (0.7.1)
+o	Implement start offset for movie menus, where the object shows up only after a certain time.
+o	- Implement iStartFrame / iEndFrame to store to project files.
+o	- Implement functionality in MenuRenderer.
+o	change ButtonObject::sourceFileInfo()
+o	Offer option to resize a menu.
+o	Create exportdvdauthor.cpp exportdvdauthor.h classes, which take over most of the current createDVD part in QDVDAuthor.
+o	BUGFIX: Resolve the DVDAUTHOR.XML file creation problem.
+o	BUGFIX: MovieDialog not crash qdvdauthor when closed.
+o	BUGFIX: Crashes, when clicking on [man] button for #=- Internal Render -=#
+o	resolved memory leak in QDVDAuthorInit:985::pExecute = new ExecuteInterface;
+Added File modifiers.cpp
+Added File importdvdauthor.cpp
+Added File importdvdauthor.h
+Added File importkino.cpp
+Added File importkino.h
+Added File exportdvdauthor.cpp
+Added File exportdvdauthor.h
+Added File importsrt.cpp
+Added File importsrt.h
+Added File uisubtitles.ui
+Added File subtitlesgui.cpp
+Added File subtitlesgui.h
+Added File keyword.cpp
+Added File keyword.h
+
+
+Version 0.0.10 alpha, released July 7'th 2005
+o	At some MovieObject's in the menu the PLEASE_WAIT img did not show up.
+o	Generate FileInfos (+Screenshots) in background task.
+o	Dither from KImageEffect -check nearest color algo- currently not pretty dithering !
+o	Implement quantize algorithm. This might be needed for the dithering of a loaded mask.
+o	Implement MediaScanner - files (Background task to determine Medias properties)
+o	Improvement of the color handling for the generated masks.
+o	Improved color handling of the mask. Added functionality to the color button toolbar.
+o	Background task : get/set thumbnail and media info from background task, so as to not to wait for the Media engine ...
+o	Add drag'n drop from SourceToolbar and automagically create MovieButton.
+o	Dither from KImmageEffect -check nearest color algo- currently notpretty dithering !
+o	Implement quantize algorithm. This might be needed for the dithering of a loaded mask.
+o	Improvement of the color handling for the generated masks.
+o	Improved color handling of the mask. Added functionality to the color button toolbar.
+o	Create feedback - button, to figure out where the problem is at people's place.
+o	Bug Fix: The KXineWidget interface was activated.
+o	Bug Fix: The button selection was reset whenever a menu-movie reached its end. Fixed it for the static menus.
+o	Add XinePreview to the ChapterDialog.
+o	Implement mediaPreview in ChapterDialog.
+o	Implement tools->styles - drop down menu.
+o	Store style in init - file.
+o	Finish ChapterDialog (manually add chapters, set chapter markers, timeline etc.)
+o	- Implement ProgressBar callback.
+o	- Implement setting the ProgressBar when clicking on a Chapter
+o	- Implement removal of StartStop slider.
+o	Finish MovieObjectDialog.
+o	- Create StartStopSlider - class. [-----[]------[]--] - two slider, one progress bar.
+o	  - Implement dynamic size adoption for the m_pLabelMovie.
+o	  - Implement MPlayerInfo::getScreenshot (iSeconds)
+o	  - Implement XineInfo::getScreenshot (iSeconds)
+o	  - Implement function that generates X images (65x65) and for starters put "please_wait.jpg" in them
+o	  - Implement background task to generate screenshots for the X images.
+o	Implement project wizard.
+o	Implement Dialog to display / handle the temp-drive and all generated temp data (of ALL projects)
+o	Implement SetupDialog - option to [delete all Temp files older than ...]
+o	- Implement background task (after start) to check for and delete projects (keep draggedImageXXX.jpg)
+o	Add option to choose external video player (drop down list for the ones found [xine / mplayer / kaffeine / kmplayer / kplayer ... etc ] ) 
+o	Implement max BackgroundThreads in SetupDialog.
+o	rename the MovieDialog from qplayer to SourceFileDialog
+o	Fixed issue of jumping to chapter 1 from any menu. 
+o	Added transparency to TextObjects.
+o	Implemented the TemplateDialog.
+o	Implement possibility to bring TextObject to front/back
+o	BUGFIX: Check all PopupWindows and make sure they are deleted after usage.
+o	Remove DialogChapters and DialogMovieObject and DialogMenu and integrate into one dialog (MovieDialog).
+o	- Called from MovieButton->Edit ... (Rename to Properties ...) [Geometry]
+o	  - Implement Geometry - tab
+o	- Called from MovieBackground -> Properties ... [Properties]
+o	- Called from ImageBackground -> Properties ... [Properties]
+o	- Called from SourceToolbar->Edit ... (Rename to Properties ...) [Properties][Chapters][Transcoding]
+o	- Remove SourceToolbar->Chapters ...
+o	- Remove SourceToolbar->Convert ...
+o	- Remove from SourceToolbar drop down menu : [Chapters ...] [Convert ...]
+o	Implement TranscodeInterface::readProjectFile / writeProjectFile
+o	Chapters are not stored when exiting MovieDialog.
+o	MovieDialog - Store the Propertie - tab in the project file.
+o	MovieDialog - Implement MovieLine for MovieObjects.
+o	Read in init - file Transcode - tab.
+o	Add ProgressDialog to show progress of conversion
+o	Continue working on the MenuObject - class to finish implementing the animationAttribute - list.
+o	MovieObject - MovieDialog does not position start-stop slider according to start/stop.
+o	Implement Preview in TemplateDialog
+o	BUGFIX: VMGM can not be overridden with the templateDialog.
+o	BUGFIX: TemplateDialog sets the currentPath to the wrong DIR.
+o	BUGFIX: Some jpgs show up as movie in the TemplateDialog.
+o	BUGFIX: unable to open mrl from Template generated menus ...
+o	BUGFIX: Timeout for temp cleanup triggers all the time.
+o	BUGFIX: TextObjects are no longer drawn on the background ... Why ?
+o	Implement usage progress bar.
+o	implement : getMenuPreview()->createAnimationData ();
+o	Implement uiTemplateWizard
+o	- Draw black DropZones.
+o	- If click in DropZone, open FileOpenDialog
+o	- DropZoneContents Menu : browse / Properties->MovieDialog / howto handle image vs movie ?
+o	- Get text for DVDMenuXML from file and replace DROP_ZONE - paceholders with collected data.
+o	BUGFIX: Crashes, when clicking on [man] button for #=- Internal Render -=#
+o	BUGFIX: The Xine engine was not correctly initiated for the KXineWidget.
+o	AnimationDialog: Offer library type script snipplets (E.g. Fadein/fadeout etc.)
+o	resolve memory leaks QDVDAuthorInit:985::pExecute = new ExecuteInterface;
+o	finish up CommandQueueGUI part of the transcoding interface.
+o	- Crashing when [man] / [e] ...
+o	Implement of basic transcoding interface.
+o	Implement basic transcode CommandBlock for video conversion to DVD conform material.
+o	Implement adjust variables according to conversion tool -> E.G. --export_asr +RATIO+ where ratio needs to get converted from 4:3 to 2 for transcode etc.
+o	Change DialogCommandEditor to have different vars for Transcoding tab.
+o	Implement the waiting for current running tasks as a timer driven task rather then blocking the foreground task.
+o	  - Implement transcode properties into QDVDAuthor structures and init file.
+o	  - Implement transcode execute block in CommandQueueDialog.
+o	MovieObject : set slider to the right pos at startup.
+o	StartStopSlider : fixed wrong length handling.
+o	Click on chapter in MovieDialog does not jump to this position ...
+o	Fixed issues with unicode representation in the xml files.
+Added   log.h
+Added   log.cpp
+Added   uitemplatewizard.ui
+Added   templatewizard.h
+Added   templatewizard.cpp
+Added   uidialoganimation.ui
+Added   dialoganimation.cpp
+Added   dialoganimation.h
+Added   animationattribute.cpp
+Added   animationattribute.h
+Added   uidialigextraction.ui
+Added   uidialigextraction.ui.h
+Added   dialogtemp.h
+Added   dialogtemp.cpp
+Added   uidialogtemp.ui
+Added   uinewwizard.ui
+Added   uinewwizard.ui.h
+Added   dialogmovie.h 
+Added   dialogmovie.cpp 
+Added   uidialogmovie.ui
+Added   qplayer/startstopcontrol.h
+Added   qplayer/startstopcontrol.cpp
+Added   qplayer/uistartstopcontrol.ui
+Renamed qplayer/dialogmovie.h to qplayer/sourcefiledialog.h
+Renamed qplayer/dialogmovie.cpp to qplayer/sourcefiledialog.cpp
+Renamed qplayer/uidialogmovie.ui to qplayer/uisourcefiledialog.ui
+Removed qplayer/dialogchapters.h
+Removed qplayer/dialogchapters.cpp
+Removed qplayer/uidialogchapters.ui
+Removed dialolgmovieobject.h
+Removed dialolgmovieobject.cpp
+Removed uidialolgmovieobject.ui
+
+
+Version 0.0.9 Released Febraury 12'th 2005
+o	Added DEPENDENCY : netpbm.sf.net
+o	A complete re-write of the media backend interface. Now you can use Xine and/or MPlayer and/or VLC rather then only xine.
+o	Include MPLayer interface transparently so the user can choose between Xine and MPlayer back-end.
+o	Added functionality to support multiple implementations of the same library. (E.g. QXineWidget AND KXineWidget)
+o	Add preferred Media Engine drop down box in setup dialog.
+o	Include preferred engine in QPlayer ini-file.
+o	Include preferred engine in QDVDAuthor ini-file.
+o	configure script now generates qdvdauthor/CONFIG.h - file
+o	configure script now generates qdvdauthor/qplayer/MEDIA_CONFIG.h - file
+o	Change configurator add MPLayer toggle functionality ...
+o	moved language files under $PREFIX/share/qdvdauthor (default for PREFIX=/usr)
+o	Modified build scripts to dynamically load media player files (E.g. QXineWidget.h only if specified --with_xine-support etc.)
+o	Make qplayer - sub-project build again ...
+o	Implement language support in qplayer MenuBar.
+o	Implement new init file with file history for qplayer
+o	Fixed missing icons for QPlayer.
+o	Added Visible region into the DVDMenu ini-file
+o	New handling of the init - file for the xine engine
+o	Moved dialogxinesetup to engines - directory
+o	Provided for MediaInterface->configureEngine() - function
+o 	When starting, then the video does not have the right size (window vs video size mismatch)
+o	DialogMovie : does not show the media files (*.*.mpg vs *.mpg) - issue
+o	create MediaInfo class and derive XineInfo, VLCInfo and MPlayerInfo from it.
+o	Implement MediaInfo functionality ...
+o	Implement backgorund initialization of MediaEngine ...
+o	Double click on item in SoureToolbar-allSources-tab does activate [Edit ...]
+o	Make SourceToolBar [all - tab] a ListView rather then a ListBox. This way we can expand if multiple Entries exists in a SourceFileEntry
+o	DialogSetup fixed some issues
+o	Info Button next to the SetupDialog - MediaEngine selector.
+o	Implemented Temp dir browse button in SetupDialog.
+o	Implement new controls functionality in SetupDialog.
+o	Dropped Text - font options in SetupDialog.
+o	Store SetupDialog's values in init file
+o	Get SourceToolBar::m_sizeThumbnail/m_sizePreview from SetupDialog into SourceToolBar.
+o	While creating thumbnails display clock-cursor.
+o	After creating ini file the DragNDrop part is missing. Put into the static part
+o	When dropping text, use set attributes ...
+o	Size and color not (re)stored nor set in SetupDialog
+o	Add text to Dropped Images/Movies. The default is the MovieName without extension.
+o	Image background refresh for DVDMenus QLabel vs QScrollView ... Or reverse to setPixmap rather the setBackground.
+o	SourceToolBar::AllSources. Add DragNDrop to re-order media files in sources.
+o	When clicking on [+] sign or [-] sign then the dialogOpen pops up ...
+o	Implement Text Drop event too.
+o	If ImageDrop's Image > MenuRect then manually re-size.
+o	BackgroundImage - refresh seems to have problems (moving text) in a non-scrollView.
+o	Add default Preview (Sound File/Error/Generating) images for Thumbnails ...
+o	Added error.png / sound_file.png / please_wait.png
+o	Sound File : disable DragNDrop !!!
+o	Added Doxyfile to the doc directory. The html documentation of the source code is build under doc/doxy/HTML.
+o	Created QListView derived class to handle darg'n drop action for m_pListView AllSources in SourceToolbar
+o	Created acceptDrop for background of DVDMenu's. Must derive ... Must derive ...
+o	Enabled Play MediaFile form SourceToolBar.
+o	Configurator : enable all supported and installed MediaEngines by default.
+o	Implement the "Play" button in the Execute - dialog (execute.cpp)
+o	Added DummyWidget and DummyInfo to program to catch MediaEngine creation problems.
+o	Fixed different ButtonSize in SourceToolBar.
+o	Added Xine support
+o	-> implement XineWidget     (QXineWIdget)
+o	-> implement KaffeineWidget (KXineWidget)
+o	-> implement XineInfo
+o	Added MPLayer support
+o	-> implement MPLayerWidget (interface to old QMPlayerWidget)
+o	-> implement MPlayerInfo
+o	- Implement QMPlayerWidget - class as an interface to MPlayers command line tool.
+o	- Added Preferred Engine to ini - file
+o	- Added configure  to MenuBar.
+o	- Added ConfigureDialog for QPlayer to choose audio / video divers and preferred engines.
+o	Get supported extensions.
+o	- Add screenshot functionality.
+o	- Add next / pref / slow / fast
+o	- If DummyWidget, then pop open the ConfigureDialog.
+o	Configurator :
+o	- Fix the compilation step calculation
+o	- When MediaEngine selection is the same as before then we do not want to remove the Makefiles.
+o	- Can we circumvent relinking for installation step ?
+o	- installation, - progress bar needs adjustment due to re-linking of qdvdauthor / qplayer ...
+o	- Configurator problem, when selecting libraries and pressing compile again. Does not seem to care ...
+o	- Fix problem with qplayer.ini - file.
+o	Move qsProjectPath / qsTempPath etc to static class global for global availability
+o	Move getTempFile to Utils - class
+o	DragNDrop : Store dropped images under temp - drive
+o	DragNDrop : Add Play / Pause / Back buttons left to thumbnail (image attached to Thumbnail ?)
+o	DragNDrop : Add drag'n drop from SourceToolbar and automagically create ImageButton.
+o	When loading project files , then the previews are not generated ...
+o	Fix the missing movie extensions for the MovieDialog.
+o	Add Undo in MainMenuBar and get UndoObject - philosophy from my DataCube - project.
+o	- One UndoBuffer per ButtonPreview, like kate, each document has its own buffer.
+o	- When switching tab's set Undo / redo accessibility
+o	- Implement Undo - functionality ...
+o	Implement Undo functionality for DragNDrop action.
+o	-> moving Objects around.
+o	- Background Image
+o	- Sound Files
+o	Implement DialogUndoStack.
+o	-> Tree structure, bundle all subsequent actions on one MenuObject together.
+o	-> show only the a max of 51 total undo / redo actions (top level, meaning modifying one object3 times before going to the next counts as one action).
+o	MoviePreview in MovieDialog. Add all button functionality.
+o	ResizeDialog : BlackBorder - option does not work, always StretchToFit !!!
+o	-> Change MPlayerInfo to assure termination of task before creating new task ...
+o	-> Change MPlayerInfo to use -identify
+o	Add [Chapters ...] to ContextMenu in SourceToolbar-all tab  (between Edit and Convert).
+o	ButtonDialog -> [Advanced >>> ] display "-- default --" in the up/down/left/right fields.
+o	Scan system - button, color non mandatory missing tools in orange. Mandatory missing tools in red.
+o	Implement MoviePreview in DVDMenu::addBackground (Screenshot)
+o	Add Open Recent-file list to MainMenuBar
+o	Add preview shot of VMGM to History Menu Entries ...
+o	Include automatic saving of recovery project every x minutes.
+o	- Include option in DialogSetup
+o	- Remove autosave file at normal shutdown
+o	- Check at programstart if autosave file exists
+o	Implement previewthread.h / previewthread.cpp
+o	Implement previewthread for MoviePreviews in the SourceToolbar.
+o	Fix broken CommandEditor.
+o	- Still strange behaviour when changing a command it'll show up as the standard first tiime around anyways.
+o	INCLUDE Movie Buttons (use qplayer + multihead extension (xine - plugin for now))
+o	Add basic support for Movie buttons
+o	- Add controls in DialogSetup under MovieButton [Start converting after drop event] [background priority]
+o	- Store new values in init - file ...
+o	- Hook start of new thread into application
+o	- Render image files and use mpeg2enc to generate a mpg file.
+o	- fix MenuPreview::insertDraggedMovie
+o	- ResizeDialog does no longer work for image files ...
+o	- TextPos and attributes of dragged material does no longer work 
+o	qdvdauthor.ini : when creating new ini - file and then click on setup - ini - file gets corrupted ...
+o	Implement background task to extract images for the required duration under the temp - folder.
+o	Implement ->Render Movie Menu<- to CommandQueue - dialog.
+o	EditCommandDialog - crashes
+o	CommandQueueDialog : the directories are wrong ... /tmp/menu//tmp/menu ???
+o	Handle case when we have a backgroundImage but a MovieMenu ...
+o	- MovieObject -> New DialogMovieButton to handle right click ...
+o	Create dialog to show internal render progress (with and w/o preview)
+o	Display wait cursor while configurator is still doing some stuff.
+o	ButtonObject contextMenu : add chekeable Move - option, which by default is unchecked.
+o	disable the edit button in the CommandQueueDialog for the #-=> internal render <=-#
+o	while rendering transparent movies the first frame is burned into the background.
+o	after rendering MovieMenu, the MovieObjects are burned in the background and the clip is on the last frame and not on the first frame.
+o	- dvdmenu::createMask, works now for MovieMenus but no longer or ImageMenus ?
+o	Store recent files preview images as png's under ~/.qdvdauthor rather then in the ini - file ...
+o	Create m_pMenuHistory manually.
+o	Added the time - span of the clips (background movie) to the commands ?
+o	Added basic support for movie backgrounds.
+o	- Implement setting of CDVDMenuInterface::qsBackgroundFileName from background thread ...
+o	- Implement Resize Options Stretch Type.
+o	- Need GUI for background settings (re-use MovieObjectDialog).
+o	- When backgroundMovie is different size than DVDMenu, we need to center/stretch/crop etc. the movie
+o	- Implement setting of CDVDMenuInterface::timeOffset
+o	- Implement setting of CDVDMenuInterface::timeDuration
+BUGS:
+o	Crashes when dragging from konqueror ...
+o	DoubleClick on some movies crashes application ..
+o	Crashes when selecting "SourceToolBar->movie->chapters ..."
+o	Crashes when dragging item we should not drag.
+o	Crashes when canceling out of the command editor dialog.
+o	UndoBackground does no longer work.
+o	DisplaySaveRegion is not stored in project.
+o	DialogSetup - man page comes up for the wrong util.
+o	fix const ... const problem. Resubmit for verification.
+o	QPlayer does not terminate after closing. Need to press Ctrl-C. WHy ?
+o	When changing the MediaEngine, then qplayer.ini gets messed up.
+o	Changing MediaEngine on-the-fly will crash QPlayer and mess up the qplayer.ini file
+o	Investigate empty init file creation problem
+o	can't delete SourceFileInfo's ... why ? Never could until today :)
+o	too many sourceFileInfos showing up in the ButtonDialog after 2'nd time opening.
+o	Status for sound files stays 'RED'
+o	Crashing when deleting sound source.
+o	Check for rendering - status file, so we don't do the whole extraction all over again if we don't need to.
+o	After menu render put ExecuteDialog on top of windows stack again.
+o	Remove the -- Default -- from the xml - files 
+o	MovieMenu, some movieButtons do render too big (not scaled at all) when creating but not after saving and re-loading of project.
+o	When deleting the last sourceFileInfo of a SourceFileEntry then remove also the header.
+o	Before rendering the menu make sure that all MovieObjects for this menu are extratcted (build into InternalRender process)
+o	Crashes in ButtonDialog, when we are opening the MovieObject - properties dialog.
+o	Ensure chapters are jumped to.
+o	Save the execute output in the temp dir.
+o	MovieObjectDialog : MPlayerInterface : Does not display the time correct. Implement callback in MPlayerInterface::slotTimeCallback
+o	Check that Highlighted and Selected works propperly in the menus.
+o 	When modifying MovieObject in MovieObjectDialog then coming back reduces the size of the movie.
+o	dvdauthor.xml does not create the second movie file.
+o	Set tiltle to menu name for MovieRenderDialog.
+o	No PLEASE WAIT anymore ???
+o	If max background tasks is set to 0 ...
+o	configure script has a few errors.
+Added file doc/Doxyfile
+Added file undobuffer.cpp
+Added file undobuffer.h
+Added file dvdmenuundoobject.cpp
+Added file dvdmenuundoobject.h
+Added file dragndropcontainer.cpp
+Added file dragndropcontainer.h
+Added file layoutwizard.cpp
+Added file layoutwizard.h
+Added file global.cpp
+Added file dialogundostack.cpp
+Added file dialogundostack.h
+Added file uidialogmovieobject.ui
+Added file dialogmovieobject.cpp
+Added file dialogmovieobject.h
+Added file uidialogrenderpreview.ui
+Added file uidialogrenderpreview.ui.h
+Added file CONFIG.h (automatic creation of file) 
+Added file qplayer/mediascanner.cpp
+Added file qplayer/mediascanner.h
+Added file qplayer/dialogaboutqplayer.ui
+Added file qplayer/engines/uidialogmplayesetup.ui
+Added file qplayer/engines/dialogmplayesetup.cpp
+Added file qplayer/engines/dialogmplayesetup.h
+Added file qplayer/engines/qmplayerwidget.cpp
+Added file qplayer/engines/qmplayerwidget.h
+Added file qplayer/engines/kplayerengine.cpp
+Added file qplayer/engines/kplayerengine.h
+Added file qplayer/engines/dummywidget.cpp
+Added file qplayer/engines/dummywidget.h
+Added file qplayer/engines/kxinewidget.cpp
+Added file qplayer/engines/kxinewidget.h
+Added file qplayer/engines/kaffeineswidget.cpp
+Added file qplayer/engines/kaffeineswidget.h
+Added file qplayer/engines/mediainterface.cpp
+Added file qplayer/engines/mediainterface.h
+Added file qplayer/engines/qxinewidget.cpp
+Added file qplayer/engines/qxinewidget.h
+Added file qplayer/engines/xinewidget.cpp
+Added file qplayer/engines/xinewidget.h
+Added file qplayer/engines/xineinfo.cpp
+Added file qplayer/engines/xineinfo.h
+Added file qplayer/engines/mplayerwidget.cpp
+Added file qplayer/engines/mplayerwidget.h
+Added file qplayer/engines/vlcwidget.cpp
+Added file qplayer/engines/vlcwidget.h
+Added file qplayer/engines/qvlcwidget.cpp
+Added file qplayer/engines/qvlcwidget.h
+Added file qplayer/engines/mplayerinfo.cpp
+Added file qplayer/engines/mplayerinfo.h
+Added file qplayer/engines/xml_mplayer.h
+Added file qplayer/engines/vlcinfo.cpp
+Added file qplayer/engines/vlcinfo.h
+Added file qplayer/MEDIA_CONFIG.h (automatic creation of file)
+Added file qplayer/mediacreator.cpp
+Added file qplayer/mediacreator.h
+Added file qplayer/mediainfo.cpp
+Added file qplayer/mediainfo.h
+Added file qplayer/qplayer.cpp
+Added file qplayer/qplayer_global.h
+Added file qplayer/qplayer.h
+Added file qplayer/qplayer_main.cpp
+Added file qplayer/uiqplayer.ui
+Added file qplayer/xml_qplayer.h
+Added file qrender/qrender.cpp
+Added file qrender/qrender.h
+Added file qrender/qrender.pro
+Added file qrender/startmenurender.cpp
+Added file qrender/startmenurender.h
+Added file qrender/xml_qrender.cpp
+Added file qrender/xml_qrender.h
+Removed file mplayer_lib.inc
+Removed file xine_lib.inc
+Removed file qplayer/convert.cpp
+Removed file qplayer/convert.h
+Removed file qplayer/dialogaboutqxine.ui
+Removed file qplayer/qxine.cpp
+Removed file qplayer/qxine_global.h
+Removed file qplayer/qxine.h
+Removed file qplayer/qxine_main.cpp
+Removed file qplayer/qxinewidget.cpp
+Removed file qplayer/qxinewidget.h
+Removed file qplayer/uiqxine.ui
+Removed file qplayer/xineinfo.cpp
+Removed file qplayer/xineinfo.h
+
+
+Version 0.0.8 Release 2 released on November 8'th 2004
+o	Minor bug fix release.
+o	Reverted Qt minimal version back to Qt 3.1
+
+
+Version 0.0.8 released on October 31'st 2004 (Halloween edition)
+o	Improved clean.sh to also remove the .ui .moc and .obj sub-directories.
+o	Improved make install, to also build lrelease qdvdauthor.pro etc ...
+o	Improved configure to better handle non-existing dependencies.
+o	Add time/elapsed time to configurator - GUI.
+o	Improved configurator to build / install the language files ...
+o	Increased Qt minimal version to 3.2.0.
+o	Added About dialog.
+o	DialogTextFont : Implement x, y, width, height attributes to the TextDialog.
+o	DialogTextFont : Remember last chosen text attributes for the TextDialog. 
+o	ButtonDialog : [Advanced >>] when modifying the action it is overwritten.
+o	DialogSetup : slotScanSystem creates a new scrollView. Need to align with the one created at initialization
+o	DialogSetup : Added dynamical buttons to the tools not found : [Search ...]
+o	Improved refresh speed through using ButtonPreview::setPaletteBackground rather then QLabel::setPixmap
+o	Implement changing of language under Tools->Languages.
+o	Implement Scan system button in DialogSetup.
+o	At first start automagically run a ScanSystem.
+o	Included all tool paths in the project file.
+o	Added NTSC/PAL save region for button positions (dotted line) to ensure buttons are visible [Tools->Save Region]. 
+o	Added Spanish translation file.
+o	Added version info into qdvdauthor.ini - files
+o	BUGFIX: Fixed a crash-bug when deleting QDVDAuthorInit.
+o	BUGFIX: Fixed crashes after second call to SetupDialog.
+o	BUGFIX: when deleting a menu the structure was not updated.
+o	BUGFIX: the generated frame button did not account for frame width.
+o	BUGFIX: Fix startup with cmdline of qplayer.
+o	BUGFIX: Unbutton positioned selected layer wrong.
+> Added file utils.cpp
+> Added file utils.h
+> Added file dialogsetup.cpp
+> Added file dialogsetup.h
+> Added file uidialogsetup.ui
+> Added file uidialogabout.ui
+> Added i18n/qdvdauthor_es.ts
+> Added images/exit.png
+> Added images/splash.jpg
+> Removed file dialogsetup.ui
+> Removed file dialogsetup.ui.h
+
+
+Version 0.0.8a release August 22'nd 2004
+o	Fixed a bug in the CommandQueueDialog. The MenuNames are now displayed correctly.
+o	Fixed configurator. Install does now work out-of-the-box.
+o	Added option to compile with or without debug information.
+o	Added Browse button in the setup dialog.
+o	Ensured all Titlesets in the dvdauthor.xml file have a menu to allow for the jumppad to work correctly.
+o	Added bugs_workaround.h file to empower user to fix bugs ...
+o	For lower screen resolutions the background is now embedded in a ScrollView.
+o	Include ScrollView also for the ImageDialog, which has the same problem.
+o	Converted application to german.
+o	Removed all dependencies to any Image library. Qt is fully able to handle all neccesary tasks.
+o	Rewrote the color handling. Button mask will now only be permitted to have 4 colors as in the DVD spec.
+o	-> Implement saving of the colors in the Project file.
+o	-> Implemented ColorToolbar functionality.
+o	Included the KImageEffect - class for the dither function. This was taken from the KDE project.
+o	Remove unneccesary paths from Project, such as for convert ...
+Added file dialogsetup.ui.h
+Added file bugs_workaround.h
+Added i18n/qdvdauthor_de.ts
+Added file kimageeffect.cpp
+Added file kimageeffect.h
+Removed file imagemagicklib.inc
+Removed file imagemagickcmdline.inc
+Removed file freeimage.inc
+Removed file cximage.inc
+Removed file imglib.inc
+
+
+Version 0.0.7 on July 05'th 2004
+o	Fixed sound file problem when opening a project file.
+o	Added funtionality to "File->Export dvdauthor (xml)".
+o	Added init file for storage of users last prefered CommandQueueDialog settings.
+o	-> Modify CommandQueueDialog to handle the offered freedoms.
+o	-> Modify DialogExecute to change the current commands after editing ...
+o	Implemented the SourceFileEditor (part of the MovieDialog).
+o	Added a ChapterDialog so we can edit / preview the chapters ...
+o	Implemented the ButtonDialog - x/y/Width/Height functionality.
+o	Implemented the ButtonDialog - the next commands (up/down/left/right) under advanced.
+o	-> Add MultiStream support for one SourceFileEntry.
+o	Modified the loading of a project so as to no longer ask for the resize method to use.
+o	-> Added attributes to images which need resizing to the project file.
+o	Adopt configure script to handle install / uninstall --prefix= etc.
+o	-> Added this feature to the configurtor-GUI
+o	Implemented an export button in the execute - dialog. So the user can now store the messages in a file.
+o	Implement the "Play" button in the Execute - dialog (execute.cpp)
+o	When make -j 2 is chosen then we are not sure qmake_image_collection.o is created from qslideshow or qxine, this would leave qdvdauthor without propper pixmaps.
+
+o	Improved the SourceToolbar to better display the chosen source files and entries.
+o	Added source information functionality to the source tabs Video, and Audio.
+o	Added Import of chapter files (such as from dvd-slideshow).
+
+o	Completly rewrote the QXineWidget so that it is now beeing used by the kaffeine, and qdvdauthor projects.
+o	Improvement to the QXineWidget - class to get initialised in a background task.
+o	-> Need to get the changes from this QXineWidget into kaffeine's QXineWidget ...
+o	Improvement to the QXineWidget - class to handle multiple windows with one xineEngine.
+
+
+Version 0.0.6 on May 09'th 2004
+o	Added a top - level makefile for all sub-projects
+o	Added qxine - sub-project.
+o	Integrated xine-lib 1.0rc3 support.
+o	Added the Image/Movie open Dialog with xine-preview. (not finished yet)
+o	Some functional improvements to the CommandQueueDialog.
+o	Added Preview - button to the Execute - Dialog.
+o	Enhanced color map handling of the buttons. Needs further work.
+o	Enhanced sound support for Menus. Needs further work.
+o	QXineWidget is now available for download and implementing in your own project.
+o	Some bug fixes.
+
+
+Version 0.0.5 on April 2'nd 2004 :
+o	Added SubMenu handling
+o	Re-modeled the dvdauthor - xml file structure, to handle sub menus.
+o	Utilizing one directiory per project in the temp drive.
+o	The dvdauthor - XML code is now presented in a main tab for the user to view.
+o	Reading/Writing of Project Files.
+o	The configure script can now be started without a GUI. (use --help for more info)
+o	Raw transparency functionality for ImageObjects (slow and not well tested).
+o	Added ImageCollection to main drop down menu (not operationel yet).
+o	Added FrameObjects.
+o	Added ImageObjects.
+o	Loads of bug fixes.
+
+
+Version 0.0.4 on March 7'th 2004 :
+o	Added basic Text-Button support.
+o	Added the TextColorDialog, and the ButtonDialog.
+o	Added support for rotation, stretching etc. to the buttons.
+o	Improved the structure view of the project.
+o	Added more functionality to the popup menus (Delete, Unbutton, Define As Button etc.).
+
+
+Version 0.0.3 on February 16'th 2004 :
+o	Finalized the ManDialog.
+o	Finalized the ExecuteDialog.
+o	Added Slideshow capabilities.
+
+
+Version 0.0.2 on January 25'th 2004 :
+o	Added COPYING with the GPL note.
+o	Added CHANGELOG
+o	Generated QDVDAuthor logo.
+o	Generated screenshots (ugly but true).
+o	Updated HomePage.
+o	qimagehelper.h / .cpp implemented imagemagicklib version (only).
+o	Generated configurator for the build process.
+o	Generated Execute-GUI class to execute command line tools.
+o	Generated a dynamic GUI before processing the DVD which displays each command to be executed, with a header, describing the purpose of said command and an editText where the user can change the command if he wants to.
+o	write the resized images back to HD to be used.
+o	Use the specified temp drives.
+
+
+Version 0.0.1 on January 3'rd 2004 :
+o	Initial version
