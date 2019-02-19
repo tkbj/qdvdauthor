@@ -1,0 +1,8 @@
+#ifndef MEDIA_CONFIG_H
+#define MEDIA_CONFIG_H
+
+#define MPLAYER_SUPPORT 1
+#define XINE_SUPPORT 1
+#define VLC_SUPPORT 1
+
+#endif	//MEDIA_CONFIG_H
