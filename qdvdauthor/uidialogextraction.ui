@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0" stdsetdef="1">
+  <author></author>
+  <comment></comment>
+  <exportmacro></exportmacro>
+  <class>uiDialogExtraction</class>
+  <widget class="QDialog" name="uiDialogExtraction">
+    <property name="geometry">
+      <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>292</width>
+        <height>203</height>
+      </rect>
+    </property>
+    <property name="windowTitle">
+      <string>Extraction Progress</string>
+    </property>
+    <property name="sizeGripEnabled">
+      <bool>true</bool>
+    </property>
+    <layout class="QVBoxLayout">
+      <item>
+        <widget class="QLabel" name="m_pTextMenu">
+          <property name="text">
+            <string>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;&lt;h2&gt;Handling Menu :&lt;br&gt;
+Main Menu VMGM&lt;/h2&gt;&lt;/b&gt;&lt;/p&gt;</string>
+          </property>
+          <property name="wordWrap">
+            <bool>false</bool>
+          </property>
+        </widget>
+      </item>
+      <item>
+        <widget class="QLabel" name="m_pTextObject">
+          <property name="text">
+            <string>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;&lt;h2&gt;Menu Object :&lt;br&gt;
+funny.avi&lt;/h2&gt;&lt;/b&gt;&lt;/p&gt;</string>
+          </property>
+          <property name="wordWrap">
+            <bool>false</bool>
+          </property>
+        </widget>
+      </item>
+      <item>
+        <widget class="QLabel" name="m_pTextTime">
+          <property name="text">
+            <string>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;&lt;h2&gt;00:00:00&lt;/h2&gt;&lt;/b&gt;&lt;/p&gt;</string>
+          </property>
+          <property name="wordWrap">
+            <bool>false</bool>
+          </property>
+        </widget>
+      </item>
+    </layout>
+  </widget>
+  <layoutdefault spacing="6" margin="11"/>
+  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+</ui>
